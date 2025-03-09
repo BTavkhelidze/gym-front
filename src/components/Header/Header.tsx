@@ -3,17 +3,39 @@
 import { headerLink } from '@/commons/services/hedaerLinks';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className='w-full bg-[#E43071] h-[64px] sm:h-[101px] flex justify-center items-center'>
+    <header
+      className={`w-full h-[64px] sm:h-[101px] fixed top-0 left-0 right-0 z-50 flex justify-center items-center transition-all duration-500 ${
+        isScrolled ? 'bg-[#E43071]' : 'bg-transparent'
+      }`}
+    >
+      {' '}
       <div className='max-w-[1440px] w-full px-[16px] sm:px-[40px] flex justify-between items-center'>
         <div className='hidden lg:block'>
           <Image
@@ -31,7 +53,7 @@ const Header = () => {
             {headerLink.map((item) => (
               <Link key={item.link} href={item.link}>
                 <li>
-                  <span className='font-[popins] font-normal text-[16px] leading-[110px] text-white'>
+                  <span className='font-[popins] font-normal text-[16px] leading-[110px] text-white '>
                     {item.title}
                   </span>
                 </li>
@@ -41,7 +63,7 @@ const Header = () => {
         </nav>
         <div className='flex items-center justify-between gap-[25px] lg:gap-[36px] '>
           <button className='flex'>
-            <span className='hidden lg:block font-[popins] font-normal text-[16px] leading-[110px] text-white'>
+            <span className='hidden lg:block mr-[10px] font-[popins] font-normal text-[16px] leading-[110px] text-white'>
               Search
             </span>
             <Image

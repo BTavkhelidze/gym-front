@@ -1,41 +1,30 @@
 export const headerLink = [
   {
-    title: 'Classess',
+    title: 'Home',
     link: 'Classess',
   },
   {
-    title: 'Timetable',
+    title: 'Classes',
     link: 'Timetable',
   },
   {
-    title: 'Clubs',
+    title: 'MemberShip',
     link: 'Clubs',
   },
   {
-    title: 'Nutrition',
+    title: 'Trainers',
     link: 'Nutrition',
   },
   {
-    title: 'Free Trial',
-    link: 'Free Trial',
-  },
-];
-
-export const SocialLinks = [
-  {
-    title: 'Classess',
-    link: 'Classess',
+    title: 'Gallery',
+    link: 'Fresdsde Trial',
   },
   {
-    title: 'Timetable',
-    link: 'Timetable',
+    title: 'Contact US',
+    link: 'Frssee Trial',
   },
   {
-    title: 'Clubs',
-    link: 'Clubs',
-  },
-  {
-    title: 'Nutrition',
-    link: 'Nutrition',
+    title: 'Join Now',
+    link: 'Frewdwe Trial',
   },
 ];
