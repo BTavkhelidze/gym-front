@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { FlipWords } from '../ui/flip-words';
 import Framer from '../ui/framer';
-import arrow from '@/../public/svg/arrow.svg';
+// import arrow from '@/../public/svg/arrow.svg';
 import Image from 'next/image';
 
 const WelcomeS1 = () => {
@@ -39,11 +39,11 @@ const WelcomeS1 = () => {
             <div className='text-base rounded-[38px] font-normal px-[10px] py-[14px] cursor-pointer bg-[#e43071] hover:bg-[#be285e] text-[#ffffff] text-center flex items-center justify-center gap-[10px]'>
               <p>Start now</p>{' '}
               <div className='pt-1'>
-                <Image
-                  src={arrow}
+                {/* <Image
+                  // src={arrow}
                   alt='arrow'
                   className='fill-red-300 stroke-amber-100'
-                />
+                /> */}
               </div>
             </div>
           </Framer>
