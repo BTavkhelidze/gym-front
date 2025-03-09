@@ -22,7 +22,7 @@ export default function App() {
       }}
       speed={2000}
       modules={[Pagination, Autoplay]}
-      className='mySwiper'
+      className='mySwiper mt-[99px]' 
     >
       <SwiperSlide>
         <div className='relative w-full xl:min-h-[700px] lg:min-h-[500px] max-h-[700px] h-full  flex items-center justify-center bg-red-300 text-white text-lg font-semibold'>
