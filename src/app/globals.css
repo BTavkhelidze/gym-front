@@ -6,19 +6,84 @@
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+  text-align: center !important;
+  font-size: 18px !important;
+  background: #fff !important;
 
   /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+
+/* memberShip Swipper start */
+/* memberShip Swipper start */
+/* memberShip Swipper start */
+/* memberShip Swipper start */
+/* Swiper კონტეინერი */
+/* Swiper კონტეინერი */
+/* Swiper კონტეინერი */
+/* Swiper კონტეინერი */
+.mySwiper2 {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 100px !important; /* უფსკრული კიდეებისთვის */
+}
+
+/* სლაიდების ზოგადი სტილი */
+.swiper-slide3 {
+  transition: all 0.5s ease !important;
+  transform: scale(0.85) !important;
+  opacity: 0.7 !important;
+  filter: blur(1px) !important;
+}
+
+/* აქტიური სლაიდი */
+.swiper-slide3.swiper-slide-active {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  filter: blur(0) !important;
+  z-index: 10 !important;
+}
+
+/* მეორე სლაიდი */
+.swiper-slide3.swiper-slide-next {
+  transform: scale(0.9) !important;
+  opacity: 0.8 !important;
+  filter: blur(0.5px) !important;
+}
+
+/* წინა სლაიდი */
+.swiper-slide3.swiper-slide-prev {
+  transform: scale(0.9) !important;
+  opacity: 0.8 !important;
+  filter: blur(0.5px) !important;
+}
+
+/* ნავიგაციის ღილაკები */
+.custom-prev,
+.custom-next {
+  cursor: pointer !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 10px !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+/* memberShip Swipper end */
+/* memberShip Swipper end */
+/* memberShip Swipper end */
+/* memberShip Swipper end */

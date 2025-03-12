@@ -4,16 +4,18 @@ import Image from 'next/image';
 
 const MembershipBaner = () => {
   return (
-    <div className='relative h-[1118px] inset-0 '>
+    <div className='relative h-auto inset-0 '>
       <Image
         src='/image/member_benefits.webp'
         alt='Member Benefits'
-        layout='fill'
-        objectFit='cover'
+        layout='responsive'
+        objectFit='contain'
+        width={1440}
+        height={1118}
       />
-      <div className='absolute top-0 left-0 w-full h-full border-[1px] border-green-900 flex justify-center'>
-        <div className='max-w-[1440px] px-[40px] w-full flex flex-col  justify-center border-[1px]'>
-          <div className='relative bottom-[130px]'>
+      <div className='absolute top-0 left-0 w-full h-full   flex justify-center'>
+        <div className='max-w-[1440px] px-[40px] w-full flex flex-col  justify-center'>
+          <div className=''>
             <h3 className='w-[600px] mb-[20px] font-[popins] font-normal text-[70px] leading-[70px] text-white '>
               MEMBERSIP WITH BENEFITS
             </h3>
