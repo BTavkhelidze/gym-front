@@ -1,6 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 
-const membershipBaner = () => {
+const MembershipBaner = () => {
   return (
     <div className='relative h-[1118px] inset-0 '>
       <Image
@@ -28,4 +30,4 @@ const membershipBaner = () => {
   );
 };
 
-export default membershipBaner;
+export default MembershipBaner;
