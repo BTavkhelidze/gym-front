@@ -1,37 +1,22 @@
-import Image from "next/image";
-import React from "react";
+import React from 'react';
+import HomeCustomers from './HomeCustomers';
 
-export default function HomeS3() {
+export default function MembershipSection() {
   return (
-    <div className="max-w-[1200px] w-full flex justify-between items-center m-auto mt-[90px]">
-      <div className="max-w-[540px] w-full">
-        <h2 className="text-[40px] font-bold text-[#E43071] ">
-          Premium Facilities
-        </h2>
-        <p className="mt-2.5 text-[16px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget
-          lectus urna. Nulla magna tortor, bibendum in molestie sed, gravida nec
-          felis. Sed id egestasegestas risus, ut imperdiet augue.
+    <div className='max-w-[1200px] w-full flex flex-col items-center justify-center m-auto mt-[90px] text-center'>
+      <h2 className='text-[40px] font-bold text-[#E43071]'>Choose Your Plan</h2>
+      <p className='mt-4 text-lg font-semibold text-gray-700'>
+        Affordable membership options for every fitness level.
+      </p>
+
+      <HomeCustomers />
+
+      <div className='mt-2 mb-4'>
+        <p className='text-lg text-gray-700'>
+          Not sure which plan is right for you?{' '}
+          <span className='text-[#E43071]'>Contact us</span> for personalized
+          recommendations.
         </p>
-        <button className="max-w-[237px] w-full h-[68px] bg-none border-[1px] border-[#E43071] rounded-[38px] mt-[20px] text-[#E43071]">
-          Learn More
-        </button>
-      </div>
-      <div className="">
-        <Image
-          src="/image/gym.png"
-          width={444}
-          height={296}
-          alt="weight"
-          className="z-10 relative"
-        />
-        <Image
-          src="/image/deadlift.png"
-          width={422}
-          height={281}
-          alt="situp"
-          className="relative mt-[-170px] ml-[199px] "
-        />
       </div>
     </div>
   );

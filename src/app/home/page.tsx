@@ -1,7 +1,9 @@
 import HomeCustomers from '@/components/landingPage/HomeCustomers';
 import HomeS2 from '@/components/landingPage/HomeS2';
+import MembershipSection from '@/components/landingPage/HomeS4';
 import HomeS4 from '@/components/landingPage/HomeS4';
 import SwiperSection from '@/components/landingPage/swiperSection';
+import TestimonialSection from '@/components/landingPage/TestimonialSection';
 import WelcomeS1 from '@/components/landingPage/WelcomeS1';
 
 export default function Home() {
@@ -10,8 +12,8 @@ export default function Home() {
       <WelcomeS1 />
       <HomeS2 />
       <SwiperSection />
-      <HomeS4 />
-      <HomeCustomers />
+      <TestimonialSection />
+      <MembershipSection />
     </div>
   );
 }

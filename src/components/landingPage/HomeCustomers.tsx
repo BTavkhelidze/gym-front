@@ -1,9 +1,10 @@
-import React from "react";
-import { HoverEffect } from "../ui/card-hover-effect";
+import React from 'react';
+import { HoverEffect } from '../ui/card-hover-effect';
+import { describe } from 'node:test';
 
 export default function HomeCustomers() {
   return (
-    <div className="max-w-[1200px] w-full mx-auto ">
+    <div className='max-w-[1200px] w-full mx-auto '>
       <HoverEffect items={projects} />
     </div>
   );
@@ -11,21 +12,27 @@ export default function HomeCustomers() {
 
 export const projects = [
   {
-    title: "Fillials",
+    title: 'Basic',
+    description:
+      'Access to gym facilities, Weekly group classes, Free fitness assessment',
 
-    link: "https://stripe.com",
-    bgImage: "/image/gymss.webp",
+    link: 'https://stripe.com',
+    bgImage: '/image/gymss.webp',
   },
   {
-    title: "Team Classes",
+    title: 'Premium',
 
-    link: "https://netflix.com",
-    bgImage: "/image/teamsGirl.jpg",
+    description:
+      'All Basic Plan benefits, Unlimited access to all classes, Personal training (2 sessions/month)',
+    link: 'https://netflix.com',
+    bgImage: '/image/teamsGirl.jpg',
   },
   {
-    title: "Join Us",
+    title: 'Vip',
+    description:
+      'All Premium Plan benefits, Priority booking for classes, Free gym merchandise',
 
-    link: "https://google.com",
-    bgImage: "/image/girl.jpg",
+    link: 'https://google.com',
+    bgImage: '/image/girl.jpg',
   },
 ];

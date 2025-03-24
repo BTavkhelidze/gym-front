@@ -1,9 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { FlipWords } from '../ui/flip-words';
-import Framer from '../ui/framer';
-// import arrow from '@/../public/svg/arrow.svg';
-import Image from 'next/image';
+// import Button from '../ui/Button';
 
 const WelcomeS1 = () => {
   const words = ['shaped', 'forged', 'tailored'];
@@ -34,19 +32,11 @@ const WelcomeS1 = () => {
           <FlipWords words={words} className='ml-2 ' />
           to you
         </div>
-        <div className='mt-[40px] w-[200px] h-[400px]'>
-          <Framer>
-            <div className='text-base rounded-[38px] font-normal px-[10px] py-[14px] cursor-pointer bg-[#e43071] hover:bg-[#be285e] text-[#ffffff] text-center flex items-center justify-center gap-[10px]'>
-              <p>Start now</p>{' '}
-              <div className='pt-1'>
-                {/* <Image
-                  // src={arrow}
-                  alt='arrow'
-                  className='fill-red-300 stroke-amber-100'
-                /> */}
-              </div>
-            </div>
-          </Framer>
+
+        <div className={'mt-4'}>
+          <div className='text-base rounded-[38px] font-normal px-[10px] py-[14px] cursor-pointer bg-[#e43071] hover:bg-[#be285e] text-[#ffffff] text-center flex items-center justify-center gap-[10px]'>
+            <p>Start now</p> <p className='pt-1'></p>
+          </div>
         </div>
       </motion.div>
     </div>

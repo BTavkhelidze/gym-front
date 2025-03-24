@@ -1,30 +1,30 @@
 export const headerLink = [
   {
     title: 'Home',
-    link: 'Classess',
+    link: '/home',
   },
   {
     title: 'Classes',
-    link: 'Timetable',
+    link: '/classes',
   },
-  {
-    title: 'MemberShip',
-    link: 'Clubs',
-  },
+  // {
+  //   title: 'MemberShip',
+  //   link: 'Clubs',
+  // },
   {
     title: 'Trainers',
-    link: 'Nutrition',
+    link: '/trainers',
   },
-  {
-    title: 'Gallery',
-    link: 'Fresdsde Trial',
-  },
-  {
-    title: 'Contact US',
-    link: 'Frssee Trial',
-  },
-  {
-    title: 'Join Now',
-    link: 'Frewdwe Trial',
-  },
+  // {
+  //   title: 'Gallery',
+  //   link: 'Fresdsde Trial',
+  // },
+  // {
+  //   title: 'Contact US',
+  //   link: 'Frssee Trial',
+  // },
+  // {
+  //   title: 'Join Now',
+  //   link: 'Frewdwe Trial',
+  // },
 ];
