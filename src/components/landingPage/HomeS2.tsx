@@ -1,32 +1,36 @@
 import Image from 'next/image';
 import React from 'react';
+import { motion } from 'framer-motion';
+import { animationDiv } from '@/framer';
+import Link from 'next/link';
 
 export default function HomeS2() {
   return (
-    <div className='max-w-[1200px] w-full flex justify-between items-center m-auto mt-[90px]'>
-      <div className=''>
-        <Image src='/image/weight.png' width={347} height={399} alt='weight' />
-        <Image
-          src='/image/situp.png'
-          width={241}
-          height={359}
-          alt='situp'
-          className='relative mt-[-220px] ml-[199px]'
+    <div className='w-full h-[110vh] py-10 relative overflow-hidden flex items-center px-30'>
+      <div className='w-full h-full absolute top-0 left-0 overflow-hidden -z-10'>
+        <video
+          className='w-full object-cover h-full'
+          src='/memberVideo.mp4'
+          autoPlay
+          muted
+          loop
         />
       </div>
-      <div className='max-w-[540px] w-full'>
-        <h2 className='text-[40px] font-bold text-[#E43071] '>
-          Meet your new body
-        </h2>
-        <p className='mt-2.5 text-[16px]'>
-          Transform your fitness journey with personalized training, tailored to
-          your goals. Whether you're looking to build muscle, lose weight, or
-          boost your stamina, we have the right plan for you. Join our community
-          and start seeing results today!
+      <div className='  bg-white mb-80 p-10 flex flex-col gap-6'>
+        <h3 className='text-3xl font-light'>One Membership. No Limits.</h3>
+        <p className='max-w-sm font-light '>
+          From dynamic classes to personal training and luxury recovery zones,
+          your journey to peak performance starts here.
         </p>
-        <button className='cursor-pointer max-w-[237px] w-full h-[68px] bg-none border-[1px] border-[#E43071] rounded-[38px] mt-[20px] text-[#E43071]'>
-          Join Now
-        </button>
+        <div className='relative self-start mt-2 cursor-pointer  flex flex-col gap-1'>
+          <Link
+            href={'/'}
+            className='hover:text-gray-600 transition-colors duration-500'
+          >
+            Explore Membership
+          </Link>
+          <div className=' w-full h-[1px] bg-black -bottom-2 self-start'></div>
+        </div>
       </div>
     </div>
   );
