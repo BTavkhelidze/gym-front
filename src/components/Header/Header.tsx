@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import HeaderNav from './HeaderNav';
 import Framer from '../ui/framer';

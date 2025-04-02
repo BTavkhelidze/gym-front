@@ -53,12 +53,12 @@ export function TrainersSection() {
 
 interface GridItemProps {
   area: string;
-  icon: React.ReactNode;
-  title: string;
-  description: React.ReactNode;
+  icon?: React.ReactNode;
+  title?: string;
+  description?: React.ReactNode;
 }
 
-const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+const GridItem = ({ area }: GridItemProps) => {
   return (
     <li className={`min-h-[600px] list-none cursor-pointer ${area}`}>
       <div className='relative h-full rounded-2.5xl border  p-2  md:rounded-3xl md:p-3'>

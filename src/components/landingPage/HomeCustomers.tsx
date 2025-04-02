@@ -1,6 +1,5 @@
 import React from 'react';
 import { HoverEffect } from '../ui/card-hover-effect';
-import { describe } from 'node:test';
 
 export default function HomeCustomers() {
   return (

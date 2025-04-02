@@ -92,8 +92,8 @@ export default function App() {
               Achieve Your Fitness Goals
             </p>
             <p className='text-base font-semibold'>
-              Whether you're a beginner or an expert, we have the right programs
-              to meet your fitness goals.
+              Whether you&apos;re a beginner or an expert, we have the right
+              programs to meet your fitness goals.
             </p>
             <div className='w-[200px] mt-4 h-[100px]'>
               <Framer>

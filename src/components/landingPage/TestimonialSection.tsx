@@ -22,8 +22,8 @@ export default function TestimonialSection() {
           />
           <p className='font-semibold text-xl text-[#E43071]'>John Doe</p>
           <p className='text-base mt-2 text-gray-600'>
-            "Joining this gym changed my life! The trainers are amazing, and the
-            community is so supportive. I’ve never felt stronger!"
+            &quot;Joining this gym changed my life! The trainers are amazing,
+            and the community is so supportive. I’ve never felt stronger!&quot;
           </p>
         </div>
 
@@ -37,8 +37,8 @@ export default function TestimonialSection() {
           />
           <p className='font-semibold text-xl text-[#E43071]'>Jane Smith</p>
           <p className='text-base mt-2 text-gray-600'>
-            "The personalized workout plans helped me achieve my fitness goals
-            faster than I expected. Highly recommend!"
+            &quot;The personalized workout plans helped me achieve my fitness
+            goals faster than I expected. Highly recommend!&quot;
           </p>
         </div>
 
@@ -52,8 +52,8 @@ export default function TestimonialSection() {
           />
           <p className='font-semibold text-xl text-[#E43071]'>Mark Johnson</p>
           <p className='text-base mt-2 text-gray-600'>
-            "I’ve tried many gyms, but this one truly stands out. The variety of
-            classes and workouts kept me motivated!"
+            &quot;I’ve tried many gyms, but this one truly stands out. The
+            variety of classes and workouts kept me motivated!&quot;
           </p>
         </div>
       </div>
