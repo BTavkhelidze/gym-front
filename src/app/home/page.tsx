@@ -14,7 +14,6 @@ export default function Home() {
       <Section3 />
       {/* <SwiperSection /> */}
       <TestimonialSection />
-      <MembershipSection />
     </div>
   );
 }

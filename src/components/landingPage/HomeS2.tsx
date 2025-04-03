@@ -22,7 +22,7 @@ export default function HomeS2() {
         </p>
         <div className='relative self-start mt-2 cursor-pointer  flex flex-col gap-1'>
           <Link
-            href={'/'}
+            href={'/membership'}
             className='hover:text-gray-600 transition-colors duration-500'
           >
             Explore Membership
