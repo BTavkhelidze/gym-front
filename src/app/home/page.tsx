@@ -6,6 +6,8 @@ import Section3 from '@/components/landingPage/Section3';
 import TestimonialSection from '@/components/landingPage/TestimonialSection';
 import WelcomeS1 from '@/components/landingPage/WelcomeS1';
 
+import LiveGymActivity from '../realTimeActivity/page';
+
 export default function Home() {
   return (
     <div>
@@ -14,6 +16,7 @@ export default function Home() {
       <Section3 />
       {/* <SwiperSection /> */}
       <TestimonialSection />
+      <LiveGymActivity />
     </div>
   );
 }
