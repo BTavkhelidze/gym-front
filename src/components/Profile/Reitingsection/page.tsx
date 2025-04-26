@@ -70,6 +70,7 @@ function RatingSection() {
               </label>
               <div className='flex justify-center space-x-4'>
                 <select
+                  title='raiting'
                   className='border p-3 rounded-lg w-full text-lg font-medium text-gray-700'
                   value={rating}
                   onChange={handleRating}

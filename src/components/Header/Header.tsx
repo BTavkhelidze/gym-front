@@ -3,12 +3,14 @@
 // import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import HeaderNav from './HeaderNav';
-import Framer from '../ui/framer';
+
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -42,13 +44,16 @@ const Header = () => {
         <div className='flex gap-[200px]'>
           <HeaderNav />
           <div className='flex items-center justify-between gap-[25px] lg:gap-[36px]'>
-            <Framer>
-              <button className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'>
-                <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
-                  Login
-                </span>
-              </button>
-            </Framer>
+            <button
+              onClick={() => {
+                router.push('/login');
+              }}
+              className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
+            >
+              <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
+                Login
+              </span>
+            </button>
 
             <div className='flex lg:hidden items-center justify-between p-4'>
               <button

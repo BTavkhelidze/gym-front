@@ -47,12 +47,14 @@ export default function SignInPage() {
     },
   });
 
-  const handleSubmit = async (formData: any) => {};
+  const handleSubmit = async (formData: any) => {
+    console.log(formData);
+  };
   return (
-    <main className='flex justify-center items-center min-h-screen'>
-      <section className='flex-1 bg-amber-300 min-h-screen'></section>
+    <main className='flex justify-center items-center min-h-screen '>
+      <section className='flex-1 min-h-screen'></section>
       <section className='flex-1 flex justify-center items-center min-h-screen'>
-        <Card className='w-[550px] p-6 border-0 shaddow-none'>
+        <Card className='w-[550px] p-6 border-0 shaddow-none text-white bg-gray-500'>
           <CardHeader>
             <CardTitle>Register</CardTitle>
             <CardDescription className='pt-4'>
@@ -105,7 +107,13 @@ export default function SignInPage() {
                     <p className='text-red-400'>{errorMessage}</p>
                   )}
                 </div>
-                <Button type='submit'>Sign In</Button>
+                <Button
+                  className='bg-amber-300 cursor-pointer'
+                  type='submit'
+                  variant={'secondary'}
+                >
+                  Sign In
+                </Button>
               </form>
             </FormProvider>
           </CardContent>

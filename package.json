@@ -24,6 +24,7 @@
     "@schedule-x/react": "^2.22.0",
     "@schedule-x/theme-default": "^2.22.0",
     "@shadcn/ui": "^0.0.4",
+    "@tanstack/react-table": "^8.21.3",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",

@@ -6,7 +6,7 @@ import WelcomeS1 from '@/components/landingPage/WelcomeS1';
 
 export default function Home() {
   return (
-    <div>
+    <div className=''>
       <WelcomeS1 />
       <HomeS2 />
       <SwiperSection />
