@@ -46,7 +46,7 @@ const Header = () => {
           <div className='flex items-center justify-between gap-[25px] lg:gap-[36px]'>
             <button
               onClick={() => {
-                router.push('/login');
+                router.push('/auth');
               }}
               className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
             >
