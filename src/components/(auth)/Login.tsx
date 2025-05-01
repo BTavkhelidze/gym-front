@@ -6,12 +6,27 @@ import { cn } from '@/lib/utils';
 import { z } from 'zod';
 import { IconBrandGoogle } from '@tabler/icons-react';
 import { useAuthStore } from '@/store/Auth';
+import { passwordSchema } from '@/validation/passwordSchema';
+import { FormProvider, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const formSchema = z.object({
+  email: z.string().email(),
+  password: passwordSchema,
+});
 
 export default function LogIn() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
     console.log('Form submitted');
-    console.log(e);
+    console.log(data);
   };
 
   const ChangeIsActiveLogIn = useAuthStore(
@@ -23,53 +38,74 @@ export default function LogIn() {
       <h2 className='text-xl font-bold text-neutral-800 dark:text-neutral-200'>
         Welcome to AlphaZone
       </h2>
+      <FormProvider {...form}>
+        <form className='my-8' onSubmit={form.handleSubmit(handleSubmit)}>
+          <LabelInputContainer className='mb-4 '>
+            <Label htmlFor='email'>Email Address</Label>
+            <Input
+              id='email'
+              placeholder='Exapmle@gmail.com'
+              type='email'
+              {...form.register('email')}
+            />
+            {form.formState.errors.email && (
+              <p className='text-sm text-red-500'>
+                {form.formState.errors.email.message}
+              </p>
+            )}
+          </LabelInputContainer>
+          <LabelInputContainer className='mb-4 '>
+            <Label htmlFor='password'>Password</Label>
+            <Input
+              id='password'
+              placeholder='••••••••'
+              type='password'
+              {...form.register('password')}
+            />
+            {form.formState.errors.password && (
+              <p className='text-sm text-red-500'>
+                {form.formState.errors.password.message}
+              </p>
+            )}
+          </LabelInputContainer>
 
-      <form className='my-8' onSubmit={handleSubmit}>
-        <LabelInputContainer className='mb-4 '>
-          <Label htmlFor='email'>Email Address</Label>
-          <Input id='email' placeholder='Exapmle@gmail.com' type='email' />
-        </LabelInputContainer>
-        <LabelInputContainer className='mb-4 '>
-          <Label htmlFor='password'>Password</Label>
-          <Input id='password' placeholder='••••••••' type='password' />
-        </LabelInputContainer>
-
-        <button
-          className='group/btn relative block mt-10 cursor-pointer h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
-          type='submit'
-        >
-          Log In &rarr;
-          <BottomGradient />
-        </button>
-
-        <div className='mt-4'>
-          <p className='text-md font-light text-white'>
-            Dont have a account?{' '}
-            <span
-              className='cursor-pointer text-blue-400 underline font-semibold'
-              onClick={() => ChangeIsActiveLogIn()}
-            >
-              {' '}
-              Log In
-            </span>
-          </p>
-        </div>
-
-        <div className='my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700' />
-
-        <div className='flex flex-col space-y-4'>
           <button
-            className='group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626] cursor-pointer'
+            className='group/btn relative block mt-10 cursor-pointer h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
             type='submit'
           >
-            <IconBrandGoogle className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
-            <span className='text-sm text-neutral-700 dark:text-neutral-300'>
-              Google
-            </span>
+            Log In &rarr;
             <BottomGradient />
           </button>
-        </div>
-      </form>
+
+          <div className='mt-4'>
+            <p className='text-md font-light text-white'>
+              Dont have a account?{' '}
+              <span
+                className='cursor-pointer text-blue-400 underline font-semibold'
+                onClick={() => ChangeIsActiveLogIn()}
+              >
+                {' '}
+                Sign Up
+              </span>
+            </p>
+          </div>
+
+          <div className='my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700' />
+
+          <div className='flex flex-col space-y-4'>
+            <button
+              className='group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626] cursor-pointer'
+              type='submit'
+            >
+              <IconBrandGoogle className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
+              <span className='text-sm text-neutral-700 dark:text-neutral-300'>
+                Google
+              </span>
+              <BottomGradient />
+            </button>
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 }
