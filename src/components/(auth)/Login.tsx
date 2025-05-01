@@ -1,127 +1,98 @@
 'use client';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-
-import { FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import { cn } from '@/lib/utils';
 import { z } from 'zod';
-
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
-const signInSchema = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(4, 'pasword must contain al least 5 character')
-    .max(20, 'pasword must contain  maximum 20 character'),
-});
+import { IconBrandGoogle } from '@tabler/icons-react';
+import { useAuthStore } from '@/store/Auth';
 
 export default function LogIn() {
-  const router = useRouter();
-
-  const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const form = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
-    defaultValues: async () => {
-      return { email: '', password: '' };
-    },
-  });
-
-  const handleSubmit = async (formData: any) => {
-    console.log(formData);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form submitted');
+    console.log(e);
   };
+
+  const ChangeIsActiveLogIn = useAuthStore(
+    (state) => state.ChangeIsActiveLogIn
+  );
+
   return (
-    <div className='w-full bg-green-300 h-full flex justify-center items-center '>
-      <Card className='w-[550px] p-6 border-0 shaddow-none text-white bg-gray-500'>
-        <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription className='pt-4'>Log In</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <FormProvider {...form}>
-            <form
-              onSubmit={form.handleSubmit(handleSubmit)}
-              className='gap-5 flex flex-col'
-              onChange={() => setErrorMessage(undefined)}
-            >
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder='Email' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <div className='shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black'>
+      <h2 className='text-xl font-bold text-neutral-800 dark:text-neutral-200'>
+        Welcome to AlphaZone
+      </h2>
 
-              <FormField
-                control={form.control}
-                name='password'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder='Password'
-                        type='password'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <form className='my-8' onSubmit={handleSubmit}>
+        <LabelInputContainer className='mb-4 '>
+          <Label htmlFor='email'>Email Address</Label>
+          <Input id='email' placeholder='Exapmle@gmail.com' type='email' />
+        </LabelInputContainer>
+        <LabelInputContainer className='mb-4 '>
+          <Label htmlFor='password'>Password</Label>
+          <Input id='password' placeholder='••••••••' type='password' />
+        </LabelInputContainer>
 
-              <div className='h-6'>
-                {errorMessage && <p className='text-red-400'>{errorMessage}</p>}
-              </div>
-              <Button
-                className='bg-amber-300 cursor-pointer'
-                type='submit'
-                variant={'secondary'}
-              >
-                Sign In
-              </Button>
-            </form>
-          </FormProvider>
-        </CardContent>
-        <CardFooter className=' flex flex-col'>
-          <p>
-            {' '}
-            try{' '}
+        <button
+          className='group/btn relative block mt-10 cursor-pointer h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
+          type='submit'
+        >
+          Log In &rarr;
+          <BottomGradient />
+        </button>
+
+        <div className='mt-4'>
+          <p className='text-md font-light text-white'>
+            Dont have a account?{' '}
             <span
               className='cursor-pointer text-blue-400 underline font-semibold'
-              onClick={() => router.push('/register')}
+              onClick={() => ChangeIsActiveLogIn()}
             >
               {' '}
-              Sign Up{' '}
+              Log In
             </span>
           </p>
-        </CardFooter>
-      </Card>
+        </div>
+
+        <div className='my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700' />
+
+        <div className='flex flex-col space-y-4'>
+          <button
+            className='group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626] cursor-pointer'
+            type='submit'
+          >
+            <IconBrandGoogle className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
+            <span className='text-sm text-neutral-700 dark:text-neutral-300'>
+              Google
+            </span>
+            <BottomGradient />
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
+
+const BottomGradient = () => {
+  return (
+    <>
+      <span className='absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100' />
+      <span className='absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100' />
+    </>
+  );
+};
+
+const LabelInputContainer = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className={cn('flex w-full flex-col space-y-2', className)}>
+      {children}
+    </div>
+  );
+};
