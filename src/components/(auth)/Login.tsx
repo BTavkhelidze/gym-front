@@ -9,6 +9,8 @@ import { useAuthStore } from '@/store/Auth';
 import { passwordSchema } from '@/validation/passwordSchema';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -16,6 +18,8 @@ const formSchema = z.object({
 });
 
 export default function LogIn() {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -24,9 +28,26 @@ export default function LogIn() {
     },
   });
 
-  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     console.log('Form submitted');
     console.log(data);
+    try {
+      const requestData = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await axios.post('/api/login', requestData, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (res.data.status === 200 && res.data.role === 'user') {
+        form.reset();
+
+        router.push('/dashboard/home');
+      }
+    } catch (e) {}
   };
 
   const ChangeIsActiveLogIn = useAuthStore(

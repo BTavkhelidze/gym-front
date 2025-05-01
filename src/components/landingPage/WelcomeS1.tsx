@@ -2,10 +2,20 @@
 import { motion } from 'framer-motion';
 import { FlipWords } from '../ui/flip-words';
 import Framer from '../ui/framer';
+import { useAuthStore } from '@/store/authStore';
+import { useEffect } from 'react';
 // import Button from '../ui/Button';
 
 const WelcomeS1 = () => {
   const words = ['shaped', 'forged', 'tailored'];
+
+  const fetchUser = useAuthStore((state) => state.fetchUser);
+  const user = useAuthStore((state) => state.user);
+  console.log(user, 'userass');
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   return (
     <div className='w-full h-screen py-10 relative overflow-hidden flex items-center px-30'>

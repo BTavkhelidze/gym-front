@@ -1,11 +1,11 @@
 export const headerLink = [
   {
     title: 'Home',
-    link: '/home',
+    link: '/dashboard/home',
   },
   {
     title: 'Classes',
-    link: '/classes',
+    link: '/dashboard/classes',
   },
   // {
   //   title: 'MemberShip',
@@ -13,7 +13,7 @@ export const headerLink = [
   // },
   {
     title: 'Trainers',
-    link: '/trainers',
+    link: '/dashboard/trainers',
   },
   // {
   //   title: 'Gallery',
