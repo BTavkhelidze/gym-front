@@ -13,12 +13,12 @@ export async function POST(req: Request) {
       body
     );
     const setCookieHeader = res.headers['set-cookie'];
-    console.log(setCookieHeader);
 
-    const nextResponse = NextResponse.json(
-      { status: 200, message: 'success', role: 'user' }
-      // { status: 200 }
-    );
+    const nextResponse = NextResponse.json({
+      status: 200,
+      message: 'success',
+      role: 'user',
+    });
 
     if (setCookieHeader) {
       const cookies = Array.isArray(setCookieHeader)
@@ -26,11 +26,11 @@ export async function POST(req: Request) {
         : [setCookieHeader];
 
       cookies.forEach((cookie) => {
-        nextResponse.headers.append('Set-Cookie', cookie);
+        if (cookie.startsWith('accesstoken=')) {
+          nextResponse.headers.append('Set-Cookie', cookie);
+        }
       });
     }
-
-    // redirect('/home');
 
     return nextResponse;
   } catch (e) {

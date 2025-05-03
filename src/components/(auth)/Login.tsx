@@ -5,12 +5,13 @@ import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 import { z } from 'zod';
 import { IconBrandGoogle } from '@tabler/icons-react';
-import { useAuthStore } from '@/store/Auth';
+
 import { passwordSchema } from '@/validation/passwordSchema';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -29,8 +30,6 @@ export default function LogIn() {
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log('Form submitted');
-    console.log(data);
     try {
       const requestData = {
         email: data.email,
@@ -44,9 +43,9 @@ export default function LogIn() {
       });
       if (res.data.status === 200 && res.data.role === 'user') {
         form.reset();
-
         router.push('/dashboard/home');
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {}
   };
 

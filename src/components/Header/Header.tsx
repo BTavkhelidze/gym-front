@@ -5,12 +5,15 @@ import { useEffect, useState } from 'react';
 import HeaderNav from './HeaderNav';
 
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
+
+  const user = useAuthStore((state) => state.user);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -38,22 +41,38 @@ const Header = () => {
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className='max-w-[1440px] w-full px-[16px] sm:px-[40px] flex justify-between items-center'>
+      <div className='max-w-[1440px] w-full  sm:px-[40px] flex justify-between items-center'>
         <h1 className='text-white font-bold text-2xl'>AlphaZone</h1>
 
         <div className='flex gap-[200px]'>
           <HeaderNav />
           <div className='flex items-center justify-between gap-[25px] lg:gap-[36px]'>
-            <button
-              onClick={() => {
-                router.push('/auth');
-              }}
-              className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
-            >
-              <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
-                Login
-              </span>
-            </button>
+            {!user ? (
+              <button
+                onClick={() => {
+                  router.push('/auth');
+                }}
+                className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
+              >
+                <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
+                  Login
+                </span>
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    router.push('/auth');
+                  }}
+                  className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
+                >
+                  <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
+                    Log Out
+                  </span>
+                </button>
+                <div className='text-white'>Profile</div>
+              </>
+            )}
 
             <div className='flex lg:hidden items-center justify-between p-4'>
               <button
