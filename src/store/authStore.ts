@@ -2,7 +2,13 @@ import axios from 'axios';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type User = { id: string; name: string } | null;
+type User = {
+  id: string;
+  avatar: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+} | null;
 
 interface AuthState {
   user: User;

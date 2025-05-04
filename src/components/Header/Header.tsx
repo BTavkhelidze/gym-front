@@ -36,6 +36,10 @@ const Header = () => {
     };
   }, [prevScrollPos]);
 
+  const goToProfile = () => {
+    router.push('/dashboard/profile');
+  };
+
   return (
     <header
       className={`w-full h-[64px] sm:h-[101px] bg-[#000000] fixed top-0 left-0 right-0 z-50 flex justify-center items-center transition-all duration-300 ${
@@ -62,7 +66,12 @@ const Header = () => {
             ) : (
               <>
                 <LogOutBtn />
-                <div className='text-white'>Profile</div>
+                <div
+                  onClick={goToProfile}
+                  className='text-white border-b py-2 cursor-pointer'
+                >
+                  Profile
+                </div>
               </>
             )}
 

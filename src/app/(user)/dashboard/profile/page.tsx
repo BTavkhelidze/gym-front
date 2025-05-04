@@ -1,8 +1,13 @@
+'use client';
 import RatingSection from '@/components/Profile/Reitingsection/page';
+import { useAuthStore } from '@/store/authStore';
+import Image from 'next/image';
 import React from 'react';
 
 function ProfilePage() {
-  // Mock user data (replace with actual user data from API or context)
+  const user1 = useAuthStore((state) => state.user);
+  console.log(user1);
+
   const user = {
     name: 'John Doe',
     email: 'johndoe@example.com',
@@ -23,67 +28,120 @@ function ProfilePage() {
     ],
   };
 
+  const userImage = `${user1?.firstName
+    .split('')
+    .at(0)
+    ?.toUpperCase()}${user1?.lastName.split('').at(0)?.toUpperCase()}`;
+
+  if (!user1) return null;
+
   return (
-    <div className='flex flex-col items-center p-6 bg-gray-100 min-h-screen'>
-      <div className='bg-white p-6 rounded-2xl shadow-md w-80 text-center'>
-        <img
-          src={user.avatar}
-          alt='Profile'
-          className='w-24 h-24 rounded-full mx-auto mb-4'
-        />
-        <h2 className='text-xl font-semibold'>{user.name}</h2>
-        <p className='text-gray-600'>{user.email}</p>
+    <div className='flex flex-col items-center min-h-screen bg-black pt-30 px-4'>
+      <div className='w-full max-w-md bg-gray-900 rounded-2xl shadow-sm p-6 transform transition-all hover:shadow-md'>
+        {/* Profile Header */}
+        <div className='flex flex-col items-center'>
+          <div className='relative bg-blue-200 text-black w-20 flex items-center justify-center h-20 rounded-full overflow-hidden mb-4'>
+            {/* <Image
+              src={user.avatar}
+              alt="Profile"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-full"
+            /> */}
+            <p>{userImage}</p>
+          </div>
+          <h2 className='text-2xl font-semibold text-white'>
+            {user1.firstName}
+          </h2>
+          <p className='text-gray-400 text-sm'>{user1.email}</p>
+        </div>
 
         {/* Membership Details */}
-        <div className='mt-4 bg-gray-50 p-4 rounded-lg text-sm'>
-          <p className='font-medium'>Membership: {user.membership.plan}</p>
-          <p>Expiry: {user.membership.expiryDate}</p>
-          <p>Visits Left: {user.membership.visitsLeft}</p>
-          <p>Status: {user.membership.paymentStatus}</p>
+        <div className='mt-6 bg-gray-800 rounded-xl p-4'>
+          <h3 className='text-sm font-medium text-gray-300 mb-2'>Membership</h3>
+          <div className='text-sm text-gray-400 space-y-1'>
+            <p>
+              <span className='font-medium'>Plan:</span> {user.membership.plan}
+            </p>
+            <p>
+              <span className='font-medium'>Expiry:</span>{' '}
+              {user.membership.expiryDate}
+            </p>
+            <p>
+              <span className='font-medium'>Visits Left:</span>{' '}
+              {user.membership.visitsLeft}
+            </p>
+            <p>
+              <span className='font-medium'>Status:</span>
+              <span
+                className={`ml-1 ${
+                  user.membership.paymentStatus === 'Active'
+                    ? 'text-green-400'
+                    : 'text-red-400'
+                }`}
+              >
+                {user.membership.paymentStatus}
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* Class Bookings */}
-        <div className='mt-4 bg-gray-50 p-4 rounded-lg text-sm'>
-          <h3 className='font-medium'>Upcoming Classes</h3>
+        <div className='mt-6 bg-gray-800 rounded-xl p-4'>
+          <h3 className='text-sm font-medium text-gray-300 mb-2'>
+            Upcoming Classes
+          </h3>
           {user.bookings.length > 0 ? (
-            <ul>
+            <ul className='text-sm text-gray-400 space-y-2'>
               {user.bookings.map((booking) => (
-                <li key={booking.id}>
-                  {booking.className} - {booking.date} at {booking.time}
+                <li key={booking.id} className='flex justify-between'>
+                  <span>{booking.className}</span>
+                  <span>
+                    {booking.date} at {booking.time}
+                  </span>
                 </li>
               ))}
             </ul>
           ) : (
-            <p>No upcoming classes</p>
+            <p className='text-sm text-gray-500'>No upcoming classes</p>
           )}
         </div>
 
         {/* Transaction History */}
-        <div className='mt-4 bg-gray-50 p-4 rounded-lg text-sm'>
-          <h3 className='font-medium'>Transaction History</h3>
+        <div className='mt-6 bg-gray-800 rounded-xl p-4'>
+          <h3 className='text-sm font-medium text-gray-300 mb-2'>
+            Transaction History
+          </h3>
           {user.transactionHistory.length > 0 ? (
-            <ul>
+            <ul className='text-sm text-gray-400 space-y-2'>
               {user.transactionHistory.map((transaction) => (
-                <li key={transaction.id}>
-                  {transaction.amount} - {transaction.date} (
-                  {transaction.status})
+                <li key={transaction.id} className='flex justify-between'>
+                  <span>{transaction.amount}</span>
+                  <span>
+                    {transaction.date} ({transaction.status})
+                  </span>
                 </li>
               ))}
             </ul>
           ) : (
-            <p>No transactions yet</p>
+            <p className='text-sm text-gray-500'>No transactions yet</p>
           )}
         </div>
 
-        <button className='mt-4 px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600'>
-          Edit Profile
-        </button>
-        <button className='mt-2 px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600'>
-          Renew Membership
-        </button>
+        {/* Action Buttons */}
+        <div className='mt-6 flex space-x-3'>
+          <button className='flex-1 py-2 bg-blue-500 text-white rounded-xl text-sm font-medium hover:bg-blue-600 transition-colors'>
+            Edit Profile
+          </button>
+          <button className='flex-1 py-2 bg-green-500 text-white rounded-xl text-sm font-medium hover:bg-green-600 transition-colors'>
+            Renew Membership
+          </button>
+        </div>
       </div>
 
-      <RatingSection />
+      <div className='w-full max-w-md mt-6'>
+        <RatingSection />
+      </div>
     </div>
   );
 }
