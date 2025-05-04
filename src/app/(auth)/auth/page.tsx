@@ -6,13 +6,11 @@ import LogIn from '@/components/(auth)/Login';
 import Register from '@/components/(auth)/Register';
 import { authImage } from '../../../../public/image';
 import Image from 'next/image';
-import { useAuthStore } from '@/store/Auth';
+import { useAuthStore } from '@/store/authStore';
 
 function Auth() {
   // const [isActiveLogIn, setIsActiveLogIn] = useState(true);
   const isActiveLogIn = useAuthStore((state) => state.isActiveLogIn);
-
-  console.log(isActiveLogIn, 'isActiveLogIn');
 
   return (
     <>

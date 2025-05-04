@@ -6,6 +6,7 @@ import HeaderNav from './HeaderNav';
 
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
+import LogOutBtn from './LogOutBtn';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,16 +61,7 @@ const Header = () => {
               </button>
             ) : (
               <>
-                <button
-                  onClick={() => {
-                    router.push('/auth');
-                  }}
-                  className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
-                >
-                  <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
-                    Log Out
-                  </span>
-                </button>
+                <LogOutBtn />
                 <div className='text-white'>Profile</div>
               </>
             )}

@@ -5,8 +5,6 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    // console.log(body);
-    // console.log(process.env.NEXT_PUBLIC_API_URL);
 
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`,
@@ -34,7 +32,7 @@ export async function POST(req: Request) {
 
     return nextResponse;
   } catch (e) {
-    console.log(e);
+    console.log(e, 'loginErrpt');
     return NextResponse.json({ status: 200, message: 'somthing went wrong' });
   }
 }

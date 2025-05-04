@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema';
 import { useAuthStore } from '@/store/authStore';
+import axios from 'axios';
 
 const formSchema = z
   .object({
@@ -33,8 +34,23 @@ export default function Register() {
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    // e.preventDefault();
-    console.log('Form submitted', data);
+    const formData = {
+      email: data.email,
+      password: data.password,
+      firstName: data.firstName,
+      lastName: data.lastName,
+    };
+
+    try {
+      const res = await axios.post('/api/register', formData);
+
+      if (res.data.status === 200) {
+        form.reset();
+        ChangeIsActiveLogIn();
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const ChangeIsActiveLogIn = useAuthStore(
@@ -110,7 +126,7 @@ export default function Register() {
             <Input
               id='passwordConfirm'
               placeholder='••••••••'
-              type='confirmpassword'
+              type='password'
               {...form.register('passwordConfirm')}
             />
             {form.formState.errors.passwordConfirm && (
