@@ -6,7 +6,6 @@ import React from 'react';
 
 function ProfilePage() {
   const user1 = useAuthStore((state) => state.user);
-  console.log(user1);
 
   const user = {
     name: 'John Doe',
@@ -34,6 +33,7 @@ function ProfilePage() {
     ?.toUpperCase()}${user1?.lastName.split('').at(0)?.toUpperCase()}`;
 
   if (!user1) return null;
+  console.log(user1, 'hover.dev');
 
   return (
     <div className='flex flex-col items-center min-h-screen bg-black pt-30 px-4'>
@@ -59,31 +59,39 @@ function ProfilePage() {
         {/* Membership Details */}
         <div className='mt-6 bg-gray-800 rounded-xl p-4'>
           <h3 className='text-sm font-medium text-gray-300 mb-2'>Membership</h3>
-          <div className='text-sm text-gray-400 space-y-1'>
-            <p>
-              <span className='font-medium'>Plan:</span> {user.membership.plan}
+          {user1.membershipId ? (
+            <div className='text-sm text-gray-400 space-y-1'>
+              <p>
+                <span className='font-medium'>Plan:</span>{' '}
+                {user.membership.plan}
+              </p>
+              <p>
+                <span className='font-medium'>Expiry:</span>{' '}
+                {user.membership.expiryDate}
+              </p>
+              <p>
+                <span className='font-medium'>Visits Left:</span>{' '}
+                {user.membership.visitsLeft}
+              </p>
+              <p>
+                <span className='font-medium'>Status:</span>
+                <span
+                  className={`ml-1 ${
+                    user.membership.paymentStatus === 'Active'
+                      ? 'text-green-400'
+                      : 'text-red-400'
+                  }`}
+                >
+                  {user.membership.paymentStatus}
+                </span>
+              </p>
+            </div>
+          ) : (
+            <p className='text-gray-400'>
+              {' '}
+              Make First step, start Now to become member of AlphaZone.
             </p>
-            <p>
-              <span className='font-medium'>Expiry:</span>{' '}
-              {user.membership.expiryDate}
-            </p>
-            <p>
-              <span className='font-medium'>Visits Left:</span>{' '}
-              {user.membership.visitsLeft}
-            </p>
-            <p>
-              <span className='font-medium'>Status:</span>
-              <span
-                className={`ml-1 ${
-                  user.membership.paymentStatus === 'Active'
-                    ? 'text-green-400'
-                    : 'text-red-400'
-                }`}
-              >
-                {user.membership.paymentStatus}
-              </span>
-            </p>
-          </div>
+          )}
         </div>
 
         {/* Class Bookings */}

@@ -22,7 +22,7 @@ export async function GET(req: Request) {
     });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    console.error('Error fetching company data:', error);
+    // console.error('Error fetching company data:', error);
     return NextResponse.json(
       { message: 'Failed to fetch company data' },
       {

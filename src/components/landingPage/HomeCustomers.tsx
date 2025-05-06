@@ -15,7 +15,6 @@ export const projects = [
     description:
       'Access to gym facilities, Weekly group classes, Free fitness assessment',
 
-    link: 'https://stripe.com',
     bgImage: '/image/gymss.webp',
   },
   {
@@ -23,7 +22,7 @@ export const projects = [
 
     description:
       'All Basic Plan benefits, Unlimited access to all classes, Personal training (2 sessions/month)',
-    link: 'https://netflix.com',
+
     bgImage: '/image/teamsGirl.jpg',
   },
   {
@@ -31,7 +30,6 @@ export const projects = [
     description:
       'All Premium Plan benefits, Priority booking for classes, Free gym merchandise',
 
-    link: 'https://google.com',
     bgImage: '/image/girl.jpg',
   },
 ];

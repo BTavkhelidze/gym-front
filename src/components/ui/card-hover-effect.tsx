@@ -1,8 +1,10 @@
 'use client';
 import { cn } from '@/lib/utils';
+import axios from 'axios';
 import { AnimatePresence, motion } from 'motion/react';
-import Link from 'next/link';
+
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const HoverEffect = ({
   items,
@@ -10,13 +12,34 @@ export const HoverEffect = ({
 }: {
   items: {
     title: string;
-    link: string;
     description: string;
-    bgImage: string; // Add background image property
+    bgImage: string;
   }[];
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  async function memberActivation(title: string) {
+    const res = await axios.post(
+      '/api/createMembership',
+      { plan: title },
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    console.log(res);
+    console.log(res.data.message.status === 201);
+    if (res.data.message.status === 201) {
+      return toast(res.data.message.message);
+    }
+    if (res.data.message.status === 400) {
+      return toast(res.data.message.message);
+    }
+    return toast('somthing went wrong, please contact us');
+  }
 
   return (
     <div
@@ -26,9 +49,9 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
+        <div
+          key={idx}
+          onClick={() => memberActivation(item.title)}
           className='relative group block p-2 h-full w-full'
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -63,8 +86,11 @@ export const HoverEffect = ({
               ))}
             </CardDescription>
           </Card>
-        </Link>
+        </div>
       ))}
+      <div className='absolute w-2 h-4 bg-red-300 right-0 bottom-0'>
+        <ToastContainer />
+      </div>
     </div>
   );
 };
