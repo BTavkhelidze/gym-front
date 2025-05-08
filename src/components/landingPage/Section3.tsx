@@ -4,44 +4,46 @@ import { classes, personalTrainer, sauna } from '../../../public/image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SwiperSection3Mob from './swiperSection3Mob';
+import '@/app/globals.css';
 
 function Section3() {
   const [activeCategory, setActiveCategory] = useState<string | null>('space');
 
   return (
-    <section className='w-full h-screen relative flex items-end justify-center'>
+    <section className='w-full h-dvh relative flex items-end justify-center'>
       <div className='w-full h-full absolute top-0 left-0 -z-10'>
         {activeCategory?.startsWith('space') && (
           <Image
             src={sauna}
             alt='space'
-            className='object-fill w-full h-full'
+            className='object-cover flex w-full h-full'
           />
         )}
         {activeCategory?.startsWith('classes') && (
           <Image
             src={classes}
             alt='classes'
-            className='object-fill w-full h-full'
+            className='object-cover not-only:flex w-full h-full'
           />
         )}
         {activeCategory?.startsWith('trainer') && (
           <Image
             src={personalTrainer}
             alt='trainer'
-            className='object-fill w-full h-full'
+            className='object-cover flex w-full h-full'
           />
         )}
       </div>
       <div className='w-full absolute top-0 h-full bg-black opacity-30 -z-10'></div>
-      <div className='flex gap-2 mb-20'>
+      <div className='hidden gap-2 mb-20 md:flex'>
         <motion.div
           animate={
             activeCategory?.startsWith('space')
               ? { background: 'white' }
               : { background: 'transparent' }
           }
-          className={`group transition-color duration-500 border border-transparent border-t-white p-10 flex flex-col gap-6 cursor-pointer`}
+          className={`group transition-color duration-500 border border-transparent border-t-white p-4 md:p-10 flex flex-col gap-6 cursor-pointer`}
           onMouseEnter={() => setActiveCategory('space')}
         >
           <h3
@@ -82,11 +84,11 @@ function Section3() {
               ? { background: 'white' }
               : { background: 'transparent' }
           }
-          className={`group transition-color border border-transparent border-t-white p-10 flex flex-col gap-6 cursor-pointer`}
+          className={`group transition-color border border-transparent border-t-white p-4 md:p-10 flex flex-col gap-3 md:gap-6 cursor-pointer`}
           onMouseEnter={() => setActiveCategory('classes')}
         >
           <h3
-            className={`text-3xl font-light transition-all duration-200 ${
+            className={`md:text-3xl text-xl font-light transition-all duration-200 ${
               activeCategory?.startsWith('classes')
                 ? 'text-black'
                 : 'text-white'
@@ -169,6 +171,12 @@ function Section3() {
             ></div>
           </div>
         </motion.div>
+      </div>
+      <div className='flex md:hidden mb-40 w-full p-[10%]'>
+        <SwiperSection3Mob
+          activeCategory={activeCategory}
+          handlesetActiveCategory={setActiveCategory}
+        />
       </div>
     </section>
   );

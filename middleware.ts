@@ -1,14 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
+// middleware.ts
+import { getSession } from '@/lib/session';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const PUBLIC_ROUTES = ['/sign-in', '/sign-up'];
+// Define public routes
+const PUBLIC_ROUTES = ['/auth'];
+
+const USER_ROUTES = ['/dashboard/home'];
 
 export async function middleware(request: NextRequest) {
-  console.log(
-    'Mid d  le w a re t r i g g se r e d f o r:',
-    request.nextUrl.pathname
-  );
-  console.error('Error log test:', request.nextUrl.pathname); // Try console.error
-  return NextResponse.next();
+  const session = await getSession(request);
+  console.log('console');
+
+  const { pathname } = request.nextUrl;
+
+  if (PUBLIC_ROUTES.includes(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (!session) {
+    return NextResponse.redirect(new URL('/auth', request.url));
+  }
+
+  return NextResponse.redirect(new URL('/auth', request.url));
 }
 
 export const config = {

@@ -35,11 +35,9 @@ export default function page() {
             <span className='text-2xl'>POWERED BY THE COLLECTIVE.</span>
           </h1>
           <div>
-            <div className=''>
-              <div className='text-base rounded-[38px] font-normal px-[10px] py-[14px] cursor-pointer bg-[#e43071] hover:bg-[#be285e] text-[#ffffff] text-center flex items-center justify-center gap-[10px]'>
-                <p>Start now</p> <div className='pt-1'></div>
-              </div>
-            </div>
+            <button className='text-base rounded-[38px]  font-normal px-[64px] py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'>
+              <p>Start now</p> <p className='pt-1'></p>
+            </button>
           </div>
         </motion.div>
       </div>

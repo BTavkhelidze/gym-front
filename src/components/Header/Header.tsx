@@ -46,10 +46,10 @@ const Header = () => {
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className='max-w-[1440px] w-full  sm:px-[40px] flex justify-between items-center'>
-        <h1 className='text-white font-bold text-2xl'>AlphaZone</h1>
+      <div className='max-w-[1440px] w-full px-[10%] md:px-[40px] flex justify-between items-center'>
+        <h1 className='text-white font-bold text-xl md:text-2xl'>AlphaZone</h1>
 
-        <div className='flex gap-[200px]'>
+        <div className='md:flex hidden gap-[200px]'>
           <HeaderNav />
           <div className='flex items-center justify-between gap-[25px] lg:gap-[36px]'>
             {!user ? (
@@ -57,7 +57,7 @@ const Header = () => {
                 onClick={() => {
                   router.push('/auth');
                 }}
-                className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
+                className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white hover:bg-[#e0dcdc]'
               >
                 <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
                   Login
@@ -101,6 +101,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <div className='flex md:hidden text-white'> burger</div>
       </div>
     </header>
   );
