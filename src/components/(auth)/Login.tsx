@@ -4,7 +4,6 @@ import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 import { z } from 'zod';
-import { IconBrandGoogle } from '@tabler/icons-react';
 
 import { passwordSchema } from '@/validation/passwordSchema';
 import { FormProvider, useForm } from 'react-hook-form';

@@ -72,7 +72,7 @@ function ClassesCategory() {
 
   return (
     <section className='max-w-[1440px] text-white w-full mx-auto px-[10%] md:px-10  xl:px-30 flex flex-col md:flex-row gap-10  md:gap-0 justify-between my-20'>
-      <p className='text-xl lg:text-3xl  font-semibold'>Classes Category</p>
+      <p className='text-xl lg:text-3xl  font-semibold'>Classes Categories</p>
       <div className={' flex gap-2 flex-wrap'}>
         {categoryClasses.map((el) => (
           <div key={el.id} className='flex items-center'>

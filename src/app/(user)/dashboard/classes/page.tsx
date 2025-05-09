@@ -2,11 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-
-// import Button from '@/components/ui/Button';
-import Schedule from '@/components/Classes/Schedule';
 import ClassesCategory from '@/components/Classes/ClassesCategory';
-import Link from 'next/link';
+import OurGymCommerical from '@/components/Classes/OurGymCommerical';
 
 export default function page() {
   return (
@@ -46,8 +43,7 @@ export default function page() {
         </div>
       </div>
       <ClassesCategory />
-
-      {/* <Schedule /> */}
+      <OurGymCommerical />
     </>
   );
 }

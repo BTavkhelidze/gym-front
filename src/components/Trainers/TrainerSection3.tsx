@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 // import SwiperSection3Mob from './swiperSection3Mob';
 import '@/app/globals.css';
+import SwiperSection3Mob from '../Classes/SwiperMob';
 
 function Section3Trainer() {
   const [activeCategory, setActiveCategory] = useState<string | null>('space');
@@ -92,11 +93,11 @@ function Section3Trainer() {
           </p>
         </motion.div>
       </div>
-      <div className='flex md:hidden mb-40 w-full p-[10%]'>
-        {/* <SwiperSection3Mob
+      <div className='flex md:hidden mb-40 w-full p-[10%] z-20 '>
+        <SwiperSection3Mob
           activeCategory={activeCategory}
           handlesetActiveCategory={setActiveCategory}
-        /> */}
+        />
       </div>
     </section>
   );

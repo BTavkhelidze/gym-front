@@ -1,13 +1,11 @@
 import axios from 'axios';
-import { redirect } from 'next/navigation';
+
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   console.log(req, 'body');
   try {
     const body = await req.json();
-    // console.log(body);
-    // console.log(process.env.NEXT_PUBLIC_API_URL);
 
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-up`,
