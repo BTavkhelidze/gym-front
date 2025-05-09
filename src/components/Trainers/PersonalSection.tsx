@@ -4,7 +4,7 @@ import { trainer, trainer1 } from '../../../public/image';
 
 function PersonalSection() {
   return (
-    <section className='max-w-[1440px] w-full mx-auto flex  py-20 h-[700px]  gap-10 px-[50px] justify-between text-white'>
+    <section className='max-w-[1440px] w-full mx-auto flex   px-[10%] md:px-10  xl:px-30 h-[700px]  gap-10 justify-between text-white'>
       <div className=' max-w-[500px] flex-1 flex flex-col gap-3  h-full justify-center '>
         <h3 className='text-2xl font-medium'>
           1:1 PRECISION RUN <span>COACHING</span>
@@ -17,7 +17,7 @@ function PersonalSection() {
           Train with a certified COACH in-Club and get a personalized strength,
           conditioning, and regeneration plan.
         </p>
-        <button className='bg-red-400 px-2 py-4 mt-4 self-start'>
+        <button className='bg-red-400 px-2 py-4 mt-4 self-start cursor-pointer'>
           Book A Session
         </button>
       </div>

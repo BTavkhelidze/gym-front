@@ -4,11 +4,8 @@ import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 import { z } from 'zod';
-import { IconBrandGoogle } from '@tabler/icons-react';
-
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema';
 import { useAuthStore } from '@/store/authStore';
 import axios from 'axios';

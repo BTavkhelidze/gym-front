@@ -1,19 +1,24 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import { FlipWords } from '../ui/flip-words';
-import Framer from '../ui/framer';
+
 import { useAuthStore } from '@/store/authStore';
 import { useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
 // import Button from '../ui/Button';
 
 const WelcomeS1 = () => {
   const words = ['shaped', 'forged', 'tailored'];
-
+  const route = useRouter();
   const fetchUser = useAuthStore((state) => state.fetchUser);
+  const user = useAuthStore((s) => s.user);
 
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
+
+  const startNowHref = user ? '/dashboard/classes' : '/auth';
 
   return (
     <section className='w-full h-dvh py-10 relative overflow-hidden flex items-center p'>
@@ -31,16 +36,7 @@ const WelcomeS1 = () => {
         className='max-w-[1440px] w-full mx-auto px-[10%] md:px-10  xl:px-30
         '
       >
-        <motion.div
-          className='max-w-[600px] h-[50px]'
-          initial={{ opacity: 0.0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: 'easeInOut',
-          }}
-        >
+        <div className='max-w-[600px] h-[50px]'>
           <div className='text-xl md:text-4xl mx-auto font-normal text-neutral-300 dark:text-neutral-400'>
             Workout
             <FlipWords words={words} className='md:ml-2 ' />
@@ -48,11 +44,14 @@ const WelcomeS1 = () => {
           </div>
 
           <div className={'mt-4 self-start max-w-[300px]'}>
-            <button className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px] bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px] cursor-pointer'>
-              <p>Start now</p> <p className='pt-1'></p>
+            <button
+              onClick={() => route.push(startNowHref)}
+              className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px] bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px] cursor-pointer'
+            >
+              <p>Start now</p>
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
