@@ -3,7 +3,7 @@ import React from 'react';
 import { IconBrandGoogle } from '@tabler/icons-react';
 function SignInWithGoogle() {
   function googleAuth() {
-    window.location.href = 'http://localhost:8080/auth/google';
+    window.location.href = 'https://gym-server-orr0.onrender.com/auth/google';
   }
   return (
     <button
