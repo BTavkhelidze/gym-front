@@ -1,10 +1,9 @@
 'use client';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+
 import React from 'react';
 
 function LogOutBtn() {
-  const router = useRouter();
   const logOut = async () => {
     try {
       const response = await axios.post('/api/logOut', {

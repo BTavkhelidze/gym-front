@@ -28,15 +28,15 @@ function TrainersHeroS1() {
           initial='initial'
           animate='animate'
         >
-          <div className='text-4xl mx-auto font-normal text-neutral-300 dark:text-neutral-400'>
-            <div className='text-4xl mx-auto font-normal text-neutral-300 dark:text-neutral-400'>
+          <div className=' mx-auto font-normal text-neutral-300 dark:text-neutral-400'>
+            <h3 className='text-xl md:text-4xl mx-auto font-normal text-neutral-300 dark:text-neutral-400'>
               Your Fitness, Our Mission!
-            </div>
+            </h3>
           </div>
           <div className='mt-[40px]'>
             <button
               onClick={() => route.push(startNowHref)}
-              className='text-base rounded-[38px]  font-normal px-[64px] py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'
+              className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'
             >
               <p>Start now</p>
             </button>

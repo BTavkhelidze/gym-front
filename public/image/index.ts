@@ -13,6 +13,7 @@ import YogaClass from './yogaClasswebp.webp';
 import PilatesClass from './PilatesClass.webp';
 import RunningClass from './RunningClass.jpg';
 import MuayThaiClass from './MuayThaiClass.jpg';
+import GymClasses from './gymClasses.jpg';
 
 export {
   trainer,
@@ -29,5 +30,6 @@ export {
   YogaClass,
   PilatesClass,
   RunningClass,
+  GymClasses,
   MuayThaiClass,
 };

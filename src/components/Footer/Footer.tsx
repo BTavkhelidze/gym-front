@@ -1,127 +1,49 @@
 'use client';
 
-import {
-  Guides,
-  QuickLinks,
-  ReachUs,
-  SocialLinks,
-} from '@/commons/services/FooterLinks';
+import { SocialLinks } from '@/commons/services/FooterLinks';
 import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer
-      style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
-      className='relative overflow-hidden w-full h-[500px]  bg-[#000000]  flex flex-col justify-center items-center'
-    >
-      <div className=' h-[500px] pt-30 flex overflow-hidden flex-col  max-w-[1440px] w-full bottom-0 mx-auto justify-between px-[10%] md:px-10  xl:px-30 '>
-        <div className='  w-full mt- flex-col md:flex-row flex  items-start '>
+    <footer className='relative overflow-hidden w-full h-[300px]  bg-[#000000]  flex flex-col justify-center items-center'>
+      <div className=' h-full  pt-30 flex overflow-hidden flex-col  max-w-[1440px] w-full bottom-0 mx-auto justify-between px-[10%] md:px-10  xl:px-30 '>
+        <div className='  w-full  flex-col sm:flex-row flex gap-4  items-start  justify-between'>
           <div className='flex  flex-col mr-[50px] max-w-[255px] w-full gap-[24px]'>
             <div>
-              <Image
-                src='/svg/MobileLogo.svg'
-                width={102}
-                height={28}
-                alt='Logo'
-              />
+              <h1 className='text-white font-bold text-xl md:text-2xl'>
+                AlphaZone
+              </h1>
             </div>
-            <p className='font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-              Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl
-              nunc quam ac sed turpis volutpat. Cursus sed massa non nisi,
-              placerat.
-            </p>
+          </div>
+
+          <div className='flex  flex-col gap-[10px] sm:gap-[24px] w-[255px]'>
+            <h6 className='font-[manrope] font-medium text-[20px] leading-[30px] text-white'>
+              Reach us
+            </h6>
             <nav>
               <ul className='flex w-full gap-[16px]'>
                 {SocialLinks.map((item) => (
                   <li
                     key={item.link}
-                    className='w-[24px] flex justify-center items-center h-[24px] rounded-[50%]  bg-[#333333] '
+                    className=' flex justify-center items-center  '
                   >
-                    <Image
-                      src={item.img}
-                      width={14}
-                      height={14}
-                      alt='Social Icons'
-                    />
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-          <div className='flex flex-col max-w-[255px] w-full gap-[24px]'>
-            <h6 className='font-[manrope] font-medium text-[20px] leading-[30px] text-white'>
-              Quick Links
-            </h6>
-            <nav>
-              <ul>
-                {QuickLinks.map((item) => (
-                  <li key={item.link} className='mb-[12px]'>
-                    <span className='font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-                      {item.link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-          <div className='flex flex-col max-w-[255px] w-full gap-[24px]'>
-            <h6 className='font-[manrope] font-medium text-[20px] leading-[30px] text-white'>
-              Guides{' '}
-            </h6>
-            <nav>
-              <ul>
-                {Guides.map((item) => (
-                  <li key={item.link} className='mb-[12px]'>
-                    <span className='font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-                      {item.link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-          <div className='flex flex-col gap-[24px] w-[255px]'>
-            <h6 className='font-[manrope] font-medium text-[20px] leading-[30px] text-white'>
-              Reach us
-            </h6>
-            <nav>
-              <ul>
-                {ReachUs.map((item) => (
-                  <li key={item.title} className='flex mb-[29px] w-[255px] '>
                     <Image
                       src={item.img}
                       width={24}
                       height={24}
-                      alt='contact'
-                      className='mr-[8px]'
+                      alt='Social Icons'
+                      className='cursor-pointer'
                     />
-                    <span className='font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-                      {item.title}
-                    </span>
                   </li>
                 ))}
               </ul>
             </nav>
           </div>
         </div>
-        <div className=' w-full flex mb-10 flex-col sm:flex-row justify-between '>
+        <div className=' w-full flex my-10  '>
           <span className='font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
             © 2020 AlphaZone. All rights reserved
           </span>
-          <div>
-            <span className='px-[8px] border-r-[1px] h-[24px] border-[#D9DBE1] font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-              Terms & Conditions
-            </span>
-            <span className='px-[8px] border-r-[1px] h-[24px] border-[#D9DBE1] font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-              Privacy Policy
-            </span>
-            <span className='px-[8px] border-r-[1px] h-[24px] border-[#D9DBE1] font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-              Sitemap
-            </span>
-            <span className='pl-[8px]  font-[manrope] font-normal text-[14px] leading-[24px] text-[#D9DBE1]'>
-              Disclaimer
-            </span>
-          </div>
         </div>
       </div>
     </footer>

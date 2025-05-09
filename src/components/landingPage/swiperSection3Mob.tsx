@@ -6,11 +6,17 @@ import 'swiper/css/autoplay';
 import { Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import React from 'react';
 
-export default function SwiperSection3Mob({
+interface IProps {
+  handlesetActiveCategory: React.Dispatch<React.SetStateAction<string | null>>;
+  activeCategory: string | null;
+}
+
+const SwiperSection3Mob: React.FC<IProps> = ({
   handlesetActiveCategory,
   activeCategory,
-}) {
+}) => {
   return (
     <Swiper
       slidesPerView={'auto'}
@@ -159,67 +165,8 @@ export default function SwiperSection3Mob({
           </div>
         </motion.div>
       </SwiperSlide>
-
-      {/* <SwiperSlide className=''>
-        <motion.div
-          animate={
-            activeCategory?.startsWith('classes')
-              ? { background: 'white' }
-              : { background: 'transparent' }
-          }
-          className={`group transition-color border border-transparent border-t-white p-4 md:p-10 flex flex-col w-[200px] gap-3 md:gap-6 cursor-pointer`}
-          onMouseEnter={() => handlesetActiveCategory('classes')}
-        >
-          <h3
-            className={`md:text-3xl text-xl font-light transition-all duration-200 ${
-              activeCategory?.startsWith('classes')
-                ? 'text-black'
-                : 'text-white'
-            }`}
-          >
-            Dynamic Group Classes
-          </h3>
-          <p
-            className={`max-w-sm font-light transition-all duration-200 ${
-              activeCategory?.startsWith('classes')
-                ? 'text-black'
-                : 'text-white'
-            }`}
-          >
-            Join high-energy classes led by expert instructors, from yoga and
-            spin to strength training and HIIT workouts.
-          </p>
-          <div
-            className={`relative self-start mt-2 cursor-pointer flex flex-col gap-1 ${
-              activeCategory?.startsWith('classes')
-                ? 'text-black'
-                : 'text-white'
-            }`}
-          >
-            <Link
-              href={'/'}
-              className='hover:text-gray-600 transition-colors duration-100'
-            >
-              View Class Schedule
-            </Link>
-            <div
-              className={`w-full h-[1px] bg-white transition-all duration-100 group-hover:bg-black -bottom-2 self-start`}
-            ></div>
-          </div>
-        </motion.div>
-      </SwiperSlide> */}
-
-      {/* <SwiperSlide className='w-[1000px]  h-[400px]'>
-        <div className='w-[400px] h-[400px]'>ss</div>
-      </SwiperSlide> */}
-      {/* <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
-      <SwiperSlide>Slide 6</SwiperSlide>
-      <SwiperSlide>Slide 7</SwiperSlide>
-      <SwiperSlide>Slide 8</SwiperSlide>
-      <SwiperSlide>Slide 9</SwiperSlide> */}
     </Swiper>
   );
-}
+};
+
+export default SwiperSection3Mob;

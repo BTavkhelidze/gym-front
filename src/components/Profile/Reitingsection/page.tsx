@@ -1,48 +1,45 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-// Mock function to check if the user has an active membership
-const hasActiveMembership = (membership) => {
-  // Check if the user has an active membership
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const hasActiveMembership = (membership: { plan: any; expiryDate: any }) => {
   return (
     membership.plan !== 'Free' && new Date(membership.expiryDate) > new Date()
   );
 };
 
 function RatingSection() {
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
   const [isMember, setIsMember] = useState(false);
 
   // Mock user data (replace with actual data from API or context)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const user = {
     name: 'John Doe',
     email: 'johndoe@example.com',
     membership: {
-      plan: 'Premium', // Change to Free for testing no membership
+      plan: 'Premium',
       expiryDate: '2025-12-31',
     },
   };
 
-  // Check if the user has an active membership
   useEffect(() => {
     if (hasActiveMembership(user.membership)) {
       setIsMember(true);
     }
   }, [user]);
 
-  const handleRating = (e) => {
-    setRating(e.target.value);
-  };
+  // const handleRating = (e: { target: { value: React.SetStateAction<number>; }; }) => {
+  //   setRating(e.target.value);
+  // };
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
-  };
+  // const handleCommentChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  //   setComment(e.target.value);
+  // };
 
-  const handleSubmitRating = () => {
-    // Handle rating submission logic (API call)
-    alert(`Rating submitted: ${rating} \nComment: ${comment}`);
-  };
+  // const handleSubmitRating = () => {
+
+  //   alert(`Rating submitted: ${rating} \nComment: ${comment}`);
+  // };
 
   return (
     <section className='py-16 bg-gradient-to-br from-indigo-500 to-purple-600'>
@@ -59,7 +56,7 @@ function RatingSection() {
         )}
 
         {/* Rating and Comment Form */}
-        {isMember && (
+        {/* {isMember && (
           <div className='bg-white p-8 rounded-xl shadow-xl max-w-md mx-auto mt-8'>
             <h3 className='text-2xl font-semibold text-gray-800 mb-4'>
               Please rate your experience
@@ -85,7 +82,7 @@ function RatingSection() {
               </div>
             </div>
 
-            {/* Comment Section */}
+        
             <div className='mb-6'>
               <label className='block text-lg text-gray-600 mb-2'>
                 Leave a Comment:
@@ -106,7 +103,7 @@ function RatingSection() {
               Submit Rating & Comment
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </section>
   );
