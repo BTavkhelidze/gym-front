@@ -46,7 +46,7 @@ const Header = () => {
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className='max-w-[1440px] w-full px-[10%] md:px-[40px] flex justify-between items-center'>
+      <div className='max-w-[1440px] w-full  px-[10%] md:px-10  xl:px-30 flex justify-between items-center'>
         <h1 className='text-white font-bold text-xl md:text-2xl'>AlphaZone</h1>
 
         <div className='md:flex hidden gap-[200px]'>

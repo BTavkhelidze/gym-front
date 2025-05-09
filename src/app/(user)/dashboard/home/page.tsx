@@ -1,12 +1,10 @@
 import HomeS2 from '@/components/landingPage/HomeS2';
-import MembershipSection from '@/components/landingPage/HomeS4';
 
 import Section3 from '@/components/landingPage/Section3';
 
-import TestimonialSection from '@/components/landingPage/TestimonialSection';
+import TestimonialSection from '@/components/landingPage/ReviewsSection';
 import WelcomeS1 from '@/components/landingPage/WelcomeS1';
-
-import LiveGymActivity from '../realTimeActivity/page';
+import LiveGymActivitySection from '@/components/landingPage/realTimeActivity';
 
 export default function Home() {
   return (
@@ -15,8 +13,8 @@ export default function Home() {
       <HomeS2 />
       <Section3 />
       {/* <SwiperSection /> */}
-      <TestimonialSection />
-      <LiveGymActivity />
+      {/* <TestimonialSection /> */}
+      <LiveGymActivitySection />
     </div>
   );
 }

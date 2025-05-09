@@ -16,8 +16,8 @@ const WelcomeS1 = () => {
   }, [fetchUser]);
 
   return (
-    <div className='w-full h-dvh py-10 relative overflow-hidden flex items-center px-[10%] md:px-30'>
-      <div className='w-full h-full absolute top-0 left-0 overflow-hidden -z-10'>
+    <section className='w-full h-dvh py-10 relative overflow-hidden flex items-center p'>
+      <div className='w-full h-full absolute top-0 left-0 overflow-hidden -z-20'>
         <video
           className='w-full object-cover h-full'
           src='https://www.crossfit.com/wp-content/uploads/2023/11/13114552/CrossFit-Where-Fitness-Meets-Health.mp4'
@@ -26,8 +26,11 @@ const WelcomeS1 = () => {
           loop
         />
       </div>
-      <div className=' left-0 w-full h-full absolute bg-[#00000030]'></div>
-      <div className='max-w-[1440px] w-full mx-auto'>
+      <div className=' left-0 w-full h-full absolute -z-10 bg-[#00000030]'></div>
+      <div
+        className='max-w-[1440px] w-full mx-auto px-[10%] md:px-10  xl:px-30
+        '
+      >
         <motion.div
           className='max-w-[600px] h-[50px]'
           initial={{ opacity: 0.0, y: 40 }}
@@ -45,13 +48,13 @@ const WelcomeS1 = () => {
           </div>
 
           <div className={'mt-4 self-start max-w-[300px]'}>
-            <button className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'>
+            <button className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px] bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px] cursor-pointer'>
               <p>Start now</p> <p className='pt-1'></p>
             </button>
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

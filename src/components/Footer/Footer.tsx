@@ -12,9 +12,9 @@ const Footer = () => {
   return (
     <footer
       style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
-      className='relative overflow-hidden w-full h-[500px] px-[16px] sm:px-[36px] bg-[#000000] pt-[43px] md:pt-[96px]  flex flex-col justify-center items-center'
+      className='relative overflow-hidden w-full h-[500px]  bg-[#000000]  flex flex-col justify-center items-center'
     >
-      <div className=' h-[500px] pt-10 flex overflow-hidden flex-col  max-w-[1160px] w-full bottom-0 mx-auto justify-between'>
+      <div className=' h-[500px] pt-30 flex overflow-hidden flex-col  max-w-[1440px] w-full bottom-0 mx-auto justify-between px-[10%] md:px-10  xl:px-30 '>
         <div className='  w-full mt- flex-col md:flex-row flex  items-start '>
           <div className='flex  flex-col mr-[50px] max-w-[255px] w-full gap-[24px]'>
             <div>

@@ -11,7 +11,7 @@ function Section3() {
   const [activeCategory, setActiveCategory] = useState<string | null>('space');
 
   return (
-    <section className='w-full h-dvh relative flex items-end justify-center'>
+    <section className='w-full h-dvh relative flex items-end md:items-center xl:justify-center xl:items-end'>
       <div className='w-full h-full absolute top-0 left-0 -z-10'>
         {activeCategory?.startsWith('space') && (
           <Image
@@ -35,26 +35,26 @@ function Section3() {
           />
         )}
       </div>
-      <div className='w-full absolute top-0 h-full bg-black opacity-30 -z-10'></div>
-      <div className='hidden gap-2 mb-20 md:flex'>
+      <div className='w-full absolute  top-0 h-full bg-black opacity-30 -z-10'></div>
+      <div className='hidden gap-2 px-[10%] md:px-10  xl:px-30 xl:mb-20 md:flex xl:flex-row flex-col '>
         <motion.div
           animate={
             activeCategory?.startsWith('space')
               ? { background: 'white' }
               : { background: 'transparent' }
           }
-          className={`group transition-color duration-500 border border-transparent border-t-white p-4 md:p-10 flex flex-col gap-6 cursor-pointer`}
+          className={`group max-w-[400px] w-full transition-color justify-between duration-500 border border-transparent border-t-white p-6 lg:p-10 flex flex-col gap-6 cursor-pointer`}
           onMouseEnter={() => setActiveCategory('space')}
         >
           <h3
-            className={`text-3xl font-light transition-all duration-200 ${
+            className={`text-2xl lg:text-3xl font-light transition-all duration-200 ${
               activeCategory?.startsWith('space') ? 'text-black' : 'text-white'
             }`}
           >
             Luxury Recovery Spaces
           </h3>
           <p
-            className={`max-w-sm font-light transition-all duration-200 ${
+            className={`max-w-sm text-sm lg:text-base font-light transition-all duration-200 ${
               activeCategory?.startsWith('space') ? 'text-black' : 'text-white'
             }`}
           >
@@ -68,7 +68,7 @@ function Section3() {
           >
             <Link
               href={'/'}
-              className='hover:text-gray-600 transition-colors duration-100'
+              className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               Discover Facilities
             </Link>
@@ -84,11 +84,11 @@ function Section3() {
               ? { background: 'white' }
               : { background: 'transparent' }
           }
-          className={`group transition-color border border-transparent border-t-white p-4 md:p-10 flex flex-col gap-3 md:gap-6 cursor-pointer`}
+          className={`group transition-color max-w-[400px] w-full  border border-transparent border-t-white p-6 lg:p-10 flex flex-col gap-3 md:gap-6  cursor-pointer justify-between`}
           onMouseEnter={() => setActiveCategory('classes')}
         >
           <h3
-            className={`md:text-3xl text-xl font-light transition-all duration-200 ${
+            className={` lg:text-3xl text-xl font-light transition-all duration-200 ${
               activeCategory?.startsWith('classes')
                 ? 'text-black'
                 : 'text-white'
@@ -97,7 +97,7 @@ function Section3() {
             Dynamic Group Classes
           </h3>
           <p
-            className={`max-w-sm font-light transition-all duration-200 ${
+            className={`max-w-sm font-light text-sm lg:text-base transition-all duration-200 ${
               activeCategory?.startsWith('classes')
                 ? 'text-black'
                 : 'text-white'
@@ -115,7 +115,7 @@ function Section3() {
           >
             <Link
               href={'/'}
-              className='hover:text-gray-600 transition-colors duration-100'
+              className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               View Class Schedule
             </Link>
@@ -131,11 +131,11 @@ function Section3() {
               ? { background: 'white' }
               : { background: 'transparent' }
           }
-          className={`group transition-color duration-500 border border-transparent border-t-white p-10 flex flex-col gap-6 cursor-pointer`}
+          className={`group max-w-[400px] w-full  transition-color duration-500 border border-transparent border-t-white p-6 lg:p-10 flex flex-col gap-6 cursor-pointer justify-between`}
           onMouseEnter={() => setActiveCategory('trainer')}
         >
           <h3
-            className={`text-3xl font-light transition-all duration-200 ${
+            className={`text-2xl lg:text-3xl font-light transition-all duration-200 ${
               activeCategory?.startsWith('trainer')
                 ? 'text-black'
                 : 'text-white'
@@ -144,7 +144,7 @@ function Section3() {
             Personal Training
           </h3>
           <p
-            className={`max-w-sm font-light transition-all duration-200 ${
+            className={`max-w-sm font-light text-sm lg:text-base transition-all duration-200 ${
               activeCategory?.startsWith('trainer')
                 ? 'text-black'
                 : 'text-white'
@@ -162,7 +162,7 @@ function Section3() {
           >
             <Link
               href={'/'}
-              className='hover:text-gray-600 transition-colors duration-100'
+              className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               Meet Our Trainers
             </Link>
