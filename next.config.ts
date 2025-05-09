@@ -8,13 +8,14 @@ const nextConfig: NextConfig = {
       'static.nike.com',
       'images.unsplash.com',
       'encrypted-tbn0.gstatic.com',
+      'upload.wikimedia.org',
     ],
   },
   async redirects() {
     return [
       {
         source: '/',
-        destination: '/home',
+        destination: '/dashboard/home',
         permanent: true,
       },
     ];

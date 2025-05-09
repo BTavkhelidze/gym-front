@@ -1,13 +1,13 @@
 import TrainersHeroS1 from '@/components/Trainers/HeroS1';
 import PersonalSection from '@/components/Trainers/PersonalSection';
-import { TrainersSection } from '@/components/Trainers/Trainers';
+import Section3Trainer from '@/components/Trainers/TrainerSection3';
 
 const page = () => {
   return (
     <main className='bg-black'>
       <TrainersHeroS1 />
       <PersonalSection />
-      <TrainersSection />
+      <Section3Trainer />
     </main>
   );
 };

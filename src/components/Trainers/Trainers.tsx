@@ -7,7 +7,7 @@ import Image from 'next/image';
 export function TrainersSection() {
   return (
     <section className='max-w-[1440px] w-full mx-auto px-[50px] py-[10px] '>
-      <ul className='grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-3 md:grid-rows-3 lg:gap-8 xl:grid-rows-2'>
+      <ul className='grid grid-cols-1 md:grid-cols-2 grid-rows-none gap-4 lg:grid-cols-3 md:grid-rows-3 lg:gap-8 xl:grid-rows-2 flex-wrap'>
         <GridItem
           area=''
           icon={<Box className='h-4 w-4 text-black dark:text-neutral-400' />}
@@ -53,12 +53,12 @@ export function TrainersSection() {
 
 interface GridItemProps {
   area: string;
-  icon: React.ReactNode;
-  title: string;
-  description: React.ReactNode;
+  icon?: React.ReactNode;
+  title?: string;
+  description?: React.ReactNode;
 }
 
-const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+const GridItem = ({ area }: GridItemProps) => {
   return (
     <li className={`min-h-[600px] list-none cursor-pointer ${area}`}>
       <div className='relative h-full rounded-2.5xl border  p-2  md:rounded-3xl md:p-3'>
