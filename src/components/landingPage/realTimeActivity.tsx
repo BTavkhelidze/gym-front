@@ -3,10 +3,12 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { realTimeSectionGym } from '../../../public/image';
 import { useAuthStore } from '@/store/authStore';
+import { useRouter } from 'next/navigation';
 
 function LiveGymActivitySection() {
   const [peopleCount, setPeopleCount] = useState(0);
   const user = useAuthStore((s) => s.user);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,7 +56,7 @@ function LiveGymActivitySection() {
           {/* Call to Action */}
           <button
             className=' cursor-pointer mt-4 block w-[166px] h-[50px] rounded-[200px] bg-white hover:bg-[#e0dcdc]'
-            onClick={() => route.push(startNowHref)}
+            onClick={() => router.push(startNowHref)}
           >
             <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
               Start Now

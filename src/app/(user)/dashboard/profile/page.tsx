@@ -1,5 +1,5 @@
 'use client';
-import RatingSection from '@/components/Profile/Reitingsection/page';
+
 import { useAuthStore } from '@/store/authStore';
 import React from 'react';
 
