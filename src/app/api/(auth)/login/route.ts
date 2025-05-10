@@ -5,10 +5,9 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`,
-      body
-    );
+    const res = await axios.post(`http://localhost:8080/auth/sign-in`, body, {
+      withCredentials: true,
+    });
     console.log(res, 'res');
     const setCookieHeader = res.headers['set-cookie'];
 
@@ -30,8 +29,10 @@ export async function POST(req: Request) {
       });
     }
     return nextResponse;
-  } catch (e) {
-    console.log(e, 'loginErrpt');
-    return NextResponse.json({ status: 200, message: 'somthing went wrong' });
+  } catch (error) {
+    return NextResponse.json({
+      status: 400,
+      message: error.response.data.message,
+    });
   }
 }
