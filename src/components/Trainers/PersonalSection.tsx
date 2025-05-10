@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { trainer, trainer1 } from '../../../public/image';
+import Link from 'next/link';
 
 function PersonalSection() {
   return (
@@ -17,9 +18,12 @@ function PersonalSection() {
           Train with a certified COACH in-Club and get a personalized strength,
           conditioning, and regeneration plan.
         </p>
-        <button className='bg-red-400 px-2 py-4 mt-4 self-start cursor-pointer text-sm md:text-base'>
+        <Link
+          href='/dashboard/classes'
+          className='bg-red-400 px-2 py-4 mt-4 self-start cursor-pointer text-sm md:text-base'
+        >
           Book A Session
-        </button>
+        </Link>
       </div>
       <div className='flex-1 max-w-[550px]'>
         <div className='relative w-full h-full'>

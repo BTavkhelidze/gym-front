@@ -7,6 +7,7 @@ import { Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 interface IProps {
   handlesetActiveCategory: React.Dispatch<React.SetStateAction<string | null>>;
@@ -27,6 +28,7 @@ const SwiperSection3Mob: React.FC<IProps> = ({
       modules={[Pagination]}
       className='mySwiper'
     >
+      <ToastContainer />
       <SwiperSlide className=''>
         <motion.div
           animate={
@@ -57,12 +59,14 @@ const SwiperSection3Mob: React.FC<IProps> = ({
               activeCategory?.startsWith('space') ? 'text-black' : 'text-white'
             }`}
           >
-            <Link
-              href={'/'}
+            <button
+              onClick={() => {
+                toast('This page is under development');
+              }}
               className='hover:text-gray-600 text-xs self-center md:text-base transition-colors duration-100'
             >
               Discover Facilities &rarr;
-            </Link>
+            </button>
             <div
               className={`w-full h-[1px] bg-white transition-all duration-100 group-hover:bg-black -bottom-2 self-start`}
             ></div>
@@ -106,7 +110,7 @@ const SwiperSection3Mob: React.FC<IProps> = ({
             }`}
           >
             <Link
-              href={'/'}
+              href={'/dashboard/classes'}
               className='hover:text-gray-600 text-xs md:text-base transition-colors duration-100'
             >
               View Class Schedule &rarr;
@@ -154,7 +158,7 @@ const SwiperSection3Mob: React.FC<IProps> = ({
             }`}
           >
             <Link
-              href={'/'}
+              href={'/dashboard/trainers'}
               className='hover:text-gray-600 text-xs md:text-base transition-colors duration-100'
             >
               Meet Our Trainers &rarr;

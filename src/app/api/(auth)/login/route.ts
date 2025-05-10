@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -31,8 +30,15 @@ export async function POST(req: Request) {
     }
 
     return nextResponse;
-  } catch (e) {
-    console.log(e, 'loginErrpt');
-    return NextResponse.json({ status: 200, message: 'somthing went wrong' });
+  } catch (error: any) {
+    const message =
+      error?.response?.data?.message ||
+      error?.message ||
+      'Something went wrong';
+
+    return NextResponse.json({
+      status: 400,
+      message,
+    });
   }
 }

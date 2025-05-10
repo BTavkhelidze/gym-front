@@ -2,6 +2,7 @@
 import React from 'react';
 import { categoryClasses } from '@/components/Classes/ClassesCategory';
 import Image from 'next/image';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default async function page({
   params,
@@ -14,6 +15,7 @@ export default async function page({
 
   return (
     <main className='text-white'>
+      <ToastContainer />
       <div className='w-full h-screen py-10 relative overflow-hidden flex items-center'>
         <div className='w-full h-full absolute top-0 left-0 overflow-hidden -z-20'>
           <Image
@@ -31,7 +33,12 @@ export default async function page({
             </h1>
             <p className='text-xl md:text-2xl'>{classCategory.description}</p>
             <div className='mt-6 self-center md:self-start'>
-              <button className='text-base rounded-[38px] font-normal px-[32px] py-[14px] md:px-[64px] md:py-[18px] cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'>
+              <button
+                onClick={() => {
+                  toast('Adding Soon');
+                }}
+                className='text-base rounded-[38px] font-normal px-[32px] py-[14px] md:px-[64px] md:py-[18px] cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'
+              >
                 <p>Try {classCategory.name}</p>
               </button>
             </div>

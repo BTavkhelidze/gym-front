@@ -2,9 +2,11 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { realTimeSectionGym } from '../../../public/image';
+import { useAuthStore } from '@/store/authStore';
 
 function LiveGymActivitySection() {
   const [peopleCount, setPeopleCount] = useState(0);
+  const user = useAuthStore((s) => s.user);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,7 +15,7 @@ function LiveGymActivitySection() {
 
     return () => clearInterval(interval);
   }, []);
-
+  const startNowHref = user ? '/dashboard/classes' : '/auth';
   return (
     <section className=' h-[800px]  w-full  flex  relative'>
       <div className='max-w-[1440px] mx-auto w-full items-center justify-center lg:justify-between flex  relative  px-[10%] md:px-10  xl:px-30'>
@@ -50,7 +52,10 @@ function LiveGymActivitySection() {
           </div>
 
           {/* Call to Action */}
-          <button className=' cursor-pointer mt-4 block w-[166px] h-[50px] rounded-[200px] bg-white hover:bg-[#e0dcdc]'>
+          <button
+            className=' cursor-pointer mt-4 block w-[166px] h-[50px] rounded-[200px] bg-white hover:bg-[#e0dcdc]'
+            onClick={() => route.push(startNowHref)}
+          >
             <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
               Start Now
             </span>

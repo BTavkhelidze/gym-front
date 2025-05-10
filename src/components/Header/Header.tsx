@@ -59,7 +59,7 @@ const Header = () => {
                 </span>
               </button>
             ) : (
-              <>
+              <div className='flex gap-6'>
                 <LogOutBtn />
                 <div
                   onClick={goToProfile}
@@ -67,7 +67,7 @@ const Header = () => {
                 >
                   Profile
                 </div>
-              </>
+              </div>
             )}
           </div>
         </div>

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
@@ -20,6 +20,7 @@ const formSchema = z.object({
 
 export default function LogIn() {
   const router = useRouter();
+  const [backError, setBackError] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -30,6 +31,7 @@ export default function LogIn() {
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    setBackError(null);
     try {
       const requestData = {
         email: data.email,
@@ -46,6 +48,11 @@ export default function LogIn() {
         form.reset();
         router.push('/dashboard/home');
       }
+
+      if (res.data.status === 400) {
+        setBackError(res.data.message);
+      }
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {}
   };
@@ -68,6 +75,10 @@ export default function LogIn() {
               placeholder='Exapmle@gmail.com'
               type='email'
               {...form.register('email')}
+              onChange={(e) => {
+                form.setValue('email', e.target.value);
+                setBackError(null);
+              }}
             />
             {form.formState.errors.email && (
               <p className='text-sm text-red-500'>
@@ -81,7 +92,10 @@ export default function LogIn() {
               id='password'
               placeholder='••••••••'
               type='password'
-              {...form.register('password')}
+              onChange={(e) => {
+                form.setValue('password', e.target.value);
+                setBackError(null);
+              }}
             />
             {form.formState.errors.password && (
               <p className='text-sm text-red-500'>
@@ -90,8 +104,12 @@ export default function LogIn() {
             )}
           </LabelInputContainer>
 
+          <div className='h-5 w-full '>
+            {backError && <p className='text-sm text-red-400'>{backError}</p>}
+          </div>
+
           <button
-            className='group/btn relative block mt-10 cursor-pointer h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
+            className='group/btn relative block mt-4 cursor-pointer h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
             type='submit'
           >
             Log In &rarr;

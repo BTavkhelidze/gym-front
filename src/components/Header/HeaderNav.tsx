@@ -19,12 +19,10 @@ const HeaderNav: React.FC<ISetOpen> = ({ setIsOpen }) => {
             key={item.link}
             onMouseEnter={() => setIsActive(item.link)}
             onMouseLeave={() => setIsActive('')}
+            onClick={() => setIsOpen?.(false)}
           >
             <Link href={item.link} className='relative  justify-center'>
-              <span
-                onClick={() => setIsOpen?.(false)}
-                className='font-[popins] font-medium text-lg leading-[50px] md:leading-[110px]  text-white '
-              >
+              <span className='font-[popins] font-medium text-lg leading-[50px] md:leading-[110px]  text-white '>
                 {item.title}
               </span>
               {isActive.startsWith(item.link) && (

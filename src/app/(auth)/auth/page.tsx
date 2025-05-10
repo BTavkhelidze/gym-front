@@ -23,15 +23,15 @@ function Auth() {
         <section className='overflow-hidden  min-w-[50%] w-full  flex justify-center items-center min-h-screen'>
           <LogIn />
         </section>
-        <section className='min-w-[50%] w-full flex items-center    min-h-screen'>
+        <section className='min-w-[50%] w-full hidden md:flex items-center pt-[64px]     h-screen'>
           <Image
             src={authImage}
             alt='image of quote: "start doing" '
-            className='w-full h-full object-cover'
+            className='w-full h-full object-cover '
           />
         </section>
         {!isActiveLogIn && (
-          <section className='overflow-hidden min-w-[50%] w-full'>
+          <section className='overflow-hidden min-w-screen md:min-w-[50%] w-full'>
             <Register />
           </section>
         )}

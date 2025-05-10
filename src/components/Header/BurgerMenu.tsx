@@ -2,11 +2,21 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import HeaderNav from './HeaderNav';
+import LogOutBtn from './LogOutBtn';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const user = useAuthStore((state) => state.user);
+
+  const router = useRouter();
+  const goToProfile = () => {
+    router.push('/dashboard/profile');
   };
 
   useEffect(() => {
@@ -27,7 +37,7 @@ function BurgerMenu() {
         type='button'
         title='button'
         onClick={toggleMenu}
-        className='text-white focus:outline-none z-30'
+        className='text-white focus:outline-none z-30 cursor-pointer'
       >
         <span
           className={`block w-[24px] h-[2px] bg-white mb-1 transition-transform duration-300 ${
@@ -50,9 +60,33 @@ function BurgerMenu() {
           initial={{ x: '600' }}
           animate={isOpen ? { x: 0 } : { x: 500 }}
           transition={{ duration: 0.5 }}
-          className='absolute top-[64px]  sm:top-[101px]  right-0 w-[300px] z-20 h-screen bg-black p-10'
+          className='absolute top-[64px]  sm:top-[101px]  right-0 w-[300px] z-20 h-screen bg-black '
         >
-          <div>
+          <div className='relative  p-10 w-full'>
+            <div className='flex flex-col border-b items-center '>
+              {!user ? (
+                <button
+                  onClick={() => {
+                    router.push('/auth');
+                  }}
+                  className='cursor-pointer block w-[166px] h-[50px] rounded-[200px] '
+                >
+                  <span className='font-[popins] font-normal text-[16px] text-[#ffffff] text-center'>
+                    Login
+                  </span>
+                </button>
+              ) : (
+                <div>
+                  <LogOutBtn />
+                  <div
+                    onClick={goToProfile}
+                    className='text-white  py-2 cursor-pointer'
+                  >
+                    Profile
+                  </div>
+                </div>
+              )}
+            </div>
             <HeaderNav setIsOpen={setIsOpen} />
           </div>
         </motion.div>

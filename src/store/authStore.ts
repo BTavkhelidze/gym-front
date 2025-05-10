@@ -8,7 +8,14 @@ type User = {
   firstName: string;
   lastName: string;
   email: string;
-  membershipId: string;
+  membershipId: {
+    endDate: string;
+    membershipPlan: string;
+    startDate: string;
+    status: string;
+    userId: string;
+    visitsLeft: number;
+  };
 } | null;
 
 interface AuthState {

@@ -13,8 +13,9 @@ function LogOutBtn() {
         },
       });
 
+      console.log(response, 'ressssLogOut');
       if (response.status === 200) {
-        window.location.reload();
+        window.location.replace('/dashboard/home');
       }
     } catch (e) {
       console.log(e);
@@ -23,9 +24,9 @@ function LogOutBtn() {
   return (
     <button
       onClick={() => logOut()}
-      className='hidden cursor-pointer lg:block w-[166px] h-[50px] rounded-[200px] bg-white'
+      className='cursor-pointer  md:w-[150px] h-[50px] rounded-[200px]  bg-none md:bg-white'
     >
-      <span className='font-[popins] font-normal text-[16px] text-[#000000] text-center'>
+      <span className='font-[popins] font-normal text-[16px] text-white md:text-[#000000] text-start md:text-center'>
         Log Out
       </span>
     </button>

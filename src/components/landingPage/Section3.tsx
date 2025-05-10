@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SwiperSection3Mob from './swiperSection3Mob';
 import '@/app/globals.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Section3() {
   const [activeCategory, setActiveCategory] = useState<string | null>('space');
 
   return (
     <section className='w-full h-dvh relative flex items-end md:items-center xl:justify-center xl:items-end'>
+      <ToastContainer />
       <div className='w-full h-full absolute top-0 left-0 -z-10'>
         {activeCategory?.startsWith('space') && (
           <Image
@@ -66,12 +68,14 @@ function Section3() {
               activeCategory?.startsWith('space') ? 'text-black' : 'text-white'
             }`}
           >
-            <Link
-              href={'/'}
+            <button
+              onClick={() => {
+                toast('This page is under development');
+              }}
               className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               Discover Facilities
-            </Link>
+            </button>
             <div
               className={`w-full h-[1px] bg-white transition-all duration-100 group-hover:bg-black -bottom-2 self-start`}
             ></div>
@@ -114,7 +118,7 @@ function Section3() {
             }`}
           >
             <Link
-              href={'/'}
+              href={'/dashboard/classes'}
               className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               View Class Schedule
@@ -161,7 +165,7 @@ function Section3() {
             }`}
           >
             <Link
-              href={'/'}
+              href={'/dashboard/trainers'}
               className='hover:text-gray-600 transition-colors duration-100 text-sm lg:text-base'
             >
               Meet Our Trainers
