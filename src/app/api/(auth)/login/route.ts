@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -10,6 +9,7 @@ export async function POST(req: Request) {
       `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`,
       body
     );
+    console.log(res, 'res');
     const setCookieHeader = res.headers['set-cookie'];
 
     const nextResponse = NextResponse.json({
@@ -29,7 +29,6 @@ export async function POST(req: Request) {
         }
       });
     }
-
     return nextResponse;
   } catch (e) {
     console.log(e, 'loginErrpt');

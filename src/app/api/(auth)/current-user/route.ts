@@ -4,7 +4,10 @@ import { NextResponse } from 'next/server';
 export async function GET(req: Request) {
   try {
     const cookieHeader = req.headers.get('cookie') || '';
-
+    console.log(
+      process.env.NEXT_PUBLIC_API_URL,
+      'process.env.NEXT_PUBLIC_API_URL'
+    );
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/current-user`,
       {
@@ -24,7 +27,7 @@ export async function GET(req: Request) {
   } catch (error: any) {
     // console.error('Error fetching company data:', error);
     return NextResponse.json(
-      { message: 'Failed to fetch company data' },
+      { message: 'Failed to fetch  data' },
       {
         status: error.response?.status || 500,
         headers: {

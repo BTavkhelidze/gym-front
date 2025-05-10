@@ -14,7 +14,7 @@ function LogOutBtn() {
       });
 
       if (response.status === 200) {
-        window.location.reload();
+        window.location.replace('/dashboard/home');
       }
     } catch (e) {
       console.log(e);
