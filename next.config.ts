@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
       'upload.wikimedia.org',
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://gym-front-seven.vercel.app/api/:path*',
+      },
+    ];
+  },
   async redirects() {
     return [
       {
