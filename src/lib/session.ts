@@ -2,6 +2,9 @@ import { NextRequest } from 'next/server';
 
 export function getSession(request: NextRequest) {
   const userToken = request.cookies.get('cookie')?.value;
-  console.log(userToken, 'userToken');
-  return userToken;
+
+  if (userToken?.includes('accesstoken')) {
+    return { isLogedIn: true };
+  }
+  return null;
 }
