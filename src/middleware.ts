@@ -12,12 +12,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname.startsWith('/dashboard')) {
-    if (!session?.isLogedIn) {
-      return NextResponse.redirect(new URL('/auth/login', request.url));
-    }
-    return NextResponse.next();
-  }
+
 
   return NextResponse.next();
 }
