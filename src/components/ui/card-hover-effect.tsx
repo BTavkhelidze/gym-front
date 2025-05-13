@@ -30,8 +30,7 @@ export const HoverEffect = ({
         },
       }
     );
-    console.log(res);
-    console.log(res.data.message.status === 201);
+
     if (res.data.message.status === 201) {
       return toast(res.data.message.message);
     }
@@ -52,7 +51,7 @@ export const HoverEffect = ({
         <div
           key={idx}
           onClick={() => memberActivation(item.title)}
-          className='relative group block p-2 h-full w-full'
+          className='relative group block p-2 h-full w-full items-center justify-center'
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -73,7 +72,7 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card bgImage={item.bgImage}>
+          <Card className='w-full ' bgImage={item.bgImage}>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription className='text-white'>
               {item.description.split(', ').map((item) => (
@@ -88,7 +87,7 @@ export const HoverEffect = ({
           </Card>
         </div>
       ))}
-      <div className='absolute w-2 h-4 bg-red-300 right-0 bottom-0'>
+      <div className='absolute w-2 h-4  right-0 bottom-0'>
         <ToastContainer />
       </div>
     </div>
@@ -107,7 +106,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        'rounded-2xl w-full  overflow-hidden border border-transparent dark:blue-b-blue-950/[0.9] group-hover:border-blue-700 group-hover:bg-blue-500/20 relative z-20 max-w-[450px] h-[335px] transition-all duration-300',
+        'rounded-2xl w-full object-cover   overflow-hidden border border-transparent dark:blue-b-blue-950/[0.9] group-hover:border-blue-700 group-hover:bg-blue-500/20 relative z-20 md:max-w-[450px] h-[335px] transition-all duration-300 bg-red-400',
         className
       )}
       style={{

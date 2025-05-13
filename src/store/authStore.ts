@@ -48,7 +48,7 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ isLoading: true, error: null });
 
-          const response = await axios.get<User>('/api/current-user', {
+          const response = await axios.get('/api/current-user', {
             withCredentials: true,
             headers: {
               'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const useAuthStore = create<AuthState>()(
           });
 
           set({
-            user: response.data || null,
+            user: response.data.data || null,
             isLoading: false,
             error: null,
           });

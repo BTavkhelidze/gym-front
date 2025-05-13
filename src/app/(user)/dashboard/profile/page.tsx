@@ -2,16 +2,22 @@
 
 import { useAuthStore } from '@/store/authStore';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function ProfilePage() {
+  const fetchUser = useAuthStore((s) => s.fetchUser);
+
+  useEffect(() => {
+    fetchUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const user1 = useAuthStore((state) => state.user);
+
   if (!user1) return null;
 
-  const userImage = `${user1?.firstName
-    .split('')
+  const userImage = `${user1?.firstName.at(0)?.toUpperCase()}${user1?.lastName
     .at(0)
-    ?.toUpperCase()}${user1?.lastName.split('').at(0)?.toUpperCase()}`;
+    ?.toUpperCase()}`;
 
   console.log('user1:', user1);
 
