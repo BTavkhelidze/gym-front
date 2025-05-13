@@ -2,22 +2,20 @@ import axios from 'axios';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface Membership {
-  endDate: string;
-  membershipPlan: string;
-  startDate: string;
-  status: string;
-  userId: string;
-  visitsLeft: number;
-}
-
 interface User {
   id: string;
   avatar: string;
   firstName: string;
   lastName: string;
   email: string;
-  membershipId?: Membership;
+  membershipId?: {
+    endDate: string;
+    membershipPlan: string;
+    startDate: string;
+    status: string;
+    userId: string;
+    visitsLeft: number;
+  };
 }
 
 interface AuthState {
@@ -25,48 +23,36 @@ interface AuthState {
   isLoading: boolean;
   isActiveLogIn: boolean;
   error: string | null;
-  isRedirecting: boolean;
   setUser: (user: User | null) => void;
-  fetchUser: (tempToken?: string) => Promise<boolean>;
+  fetchUser: () => Promise<void>;
   logout: () => Promise<void>;
   ChangeIsActiveLogIn: () => void;
-  setIsRedirecting: (isRedirecting: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       isActiveLogIn: true,
       user: null,
       isLoading: false,
       error: null,
-      isRedirecting: false,
 
       ChangeIsActiveLogIn: () =>
-        set((state) => ({ isActiveLogIn: !state.isActiveLogIn })),
+        set((state) => ({
+          isActiveLogIn: !state.isActiveLogIn,
+        })),
 
       setUser: (user) => set({ user }),
-      setIsRedirecting: (isRedirecting) => set({ isRedirecting }),
 
-      fetchUser: async (tempToken?: string) => {
-        // Skip if already loading
-        if (get().isLoading) return false;
-
-        set({ isLoading: true, error: null });
-
+      fetchUser: async () => {
         try {
-          const headers: Record<string, string> = {
-            'Content-Type': 'application/json',
-          };
-
-          // Add temporary token if provided
-          if (tempToken) {
-            headers['Authorization'] = `Bearer ${tempToken}`;
-          }
+          set({ isLoading: true, error: null });
 
           const response = await axios.get<User>('/api/current-user', {
             withCredentials: true,
-            headers,
+            headers: {
+              'Content-Type': 'application/json',
+            },
             timeout: 10000,
           });
 
@@ -74,24 +60,25 @@ export const useAuthStore = create<AuthState>()(
             user: response.data || null,
             isLoading: false,
             error: null,
-            isRedirecting: false,
           });
-          return true;
         } catch (err) {
           console.error('Error fetching user:', err);
 
-          const errorMessage = axios.isAxiosError(err)
-            ? err.response?.status === 401
-              ? 'Session expired. Please log in again.'
-              : err.response?.data?.message || 'Authentication failed'
-            : 'Network error';
-
-          set({
-            error: errorMessage,
-            isLoading: false,
-            user: null,
-          });
-          return false;
+          if (axios.isAxiosError(err)) {
+            set({
+              error:
+                err.response?.status === 401
+                  ? 'Session expired. Please log in again.'
+                  : err.response?.data?.message || 'Authentication failed',
+              isLoading: false,
+              user: null,
+            });
+          } else {
+            set({
+              error: 'Network error',
+              isLoading: false,
+            });
+          }
         }
       },
 
