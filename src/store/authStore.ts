@@ -20,7 +20,7 @@ type User = {
 
 interface AuthState {
   user: User;
-  isLoading: true | false;
+  isLoading: boolean;
   isActiveLogIn: boolean;
   setUser: (user: User) => void;
   fetchUser: () => Promise<void>;
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>()(
       ChangeIsActiveLogIn: () =>
         set((state) => ({ isActiveLogIn: !state.isActiveLogIn })),
       user: null,
-      isLoading: true,
+      isLoading: false,
       setUser: (user) => set({ user }),
       fetchUser: async () => {
         set({ isLoading: true });
@@ -46,7 +46,7 @@ export const useAuthStore = create<AuthState>()(
           });
           set({ user: response.data.data || null, isLoading: false });
         } catch (err) {
-          console.log(err);
+          console.error('Error fetching user:', err);
           set({ user: null, isLoading: false });
         }
       },
@@ -55,12 +55,13 @@ export const useAuthStore = create<AuthState>()(
           method: 'POST',
           credentials: 'include',
         });
+
         set({ user: null });
       },
     }),
     {
-      name: 'auth-storage', // key for localStorage
-      partialize: (state) => ({ user: state.user }), // only persist user
+      name: 'auth-storage',
+      partialize: (state) => ({ user: state.user }),
     }
   )
 );
