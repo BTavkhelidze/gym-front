@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(req: Request) {
   try {
     const cookieHeader = req.headers.get('cookie') || '';
-    console.log(req.headers, 'process.env.NEXT_PUBLIC_API_URL');
+
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/current-user`,
       {

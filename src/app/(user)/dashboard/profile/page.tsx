@@ -46,7 +46,7 @@ function ProfilePage() {
   }
 
   return (
-    <div className='flex flex-col items-center min-h-screen bg-black pt-30 px-4'>
+    <div className='flex flex-col items-center min-h-screen bg-black pt-30 px-[10%] md:px-10  xl:px-30'>
       <div className='w-full max-w-md bg-gray-900 rounded-2xl shadow-sm p-6 transform transition-all hover:shadow-md'>
         <div className='flex flex-col items-center'>
           <div className='relative bg-blue-200 text-black w-20 flex items-center justify-center h-20 rounded-full overflow-hidden mb-4'>

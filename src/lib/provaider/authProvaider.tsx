@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return (
-      <div className='fixed inset-0 flex items-center justify-center bg-black text-white'>
+      <div className='fixed inset-0 flex items-center justify-center  text-white flex-col gap-2 px-[10%] md:px-10  xl:px-30'>
         <svg
           className='animate-spin h-8 w-8 mr-3'
           xmlns='http://www.w3.org/2000/svg'
@@ -57,6 +57,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z'
           />
         </svg>
+        <p>
+          {' '}
+          Due to the free hosting tier, the initial page load may take 30–90
+          seconds as the server wakes up from sleep.
+        </p>
       </div>
     );
   }
