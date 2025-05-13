@@ -8,7 +8,7 @@ import OurGymCommerical from '@/components/Classes/OurGymCommerical';
 import { useAuthStore } from '@/store/authStore';
 import { useRouter } from 'next/navigation';
 
-export default function page() {
+export default function Class() {
   const user = useAuthStore((s) => s.user);
   const route = useRouter();
   const startNowHref = user ? '/dashboard/classes' : '/auth';
