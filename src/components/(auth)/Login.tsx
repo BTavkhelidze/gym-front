@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
-import SignInWithGoogle from './SignInWithGoogle';
+// import SignInWithGoogle from './SignInWithGoogle';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -131,9 +131,9 @@ export default function LogIn() {
 
           <div className='my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700' />
 
-          <div className='flex flex-col space-y-4'>
+          {/* <div className='flex flex-col space-y-4'>
             <SignInWithGoogle />
-          </div>
+          </div> */}
         </form>
       </FormProvider>
     </div>

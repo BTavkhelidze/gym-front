@@ -5,7 +5,13 @@ import { motion } from 'framer-motion';
 import ClassesCategory from '@/components/Classes/ClassesCategory';
 import OurGymCommerical from '@/components/Classes/OurGymCommerical';
 
+import { useAuthStore } from '@/store/authStore';
+import { useRouter } from 'next/navigation';
+
 export default function page() {
+  const user = useAuthStore((s) => s.user);
+  const route = useRouter();
+  const startNowHref = user ? '/dashboard/classes' : '/auth';
   return (
     <>
       <div className='w-full h-screen py-10 relative overflow-hidden flex items-center '>
@@ -35,8 +41,11 @@ export default function page() {
               <span className='text-2xl'>POWERED BY THE COLLECTIVE.</span>
             </h1>
             <div>
-              <button className='text-base rounded-[38px]  font-normal px-[32px] py-[14px] md:px-[64px] md:py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'>
-                <p>Start now</p> <p className='pt-1'></p>
+              <button
+                onClick={() => route.push(startNowHref)}
+                className='text-base rounded-[38px]  font-normal px-[32px] py-[12px] md:px-[64px] md:py-[18px]  cursor-pointer bg-white hover:bg-[#e0dcdc] text-[black] text-center flex items-center justify-center gap-[10px]'
+              >
+                <p>Start now</p>
               </button>
             </div>
           </motion.div>
