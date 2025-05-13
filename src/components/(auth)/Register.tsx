@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema';
 import { useAuthStore } from '@/store/authStore';
 import axios from 'axios';
-import SignInWithGoogle from './SignInWithGoogle';
+// import SignInWithGoogle from './SignInWithGoogle';
 
 const formSchema = z
   .object({
@@ -20,6 +20,7 @@ const formSchema = z
   .and(passwordMatchSchema);
 
 export default function Register() {
+  const [backError, setBackError] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,6 +33,7 @@ export default function Register() {
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    setBackError(null);
     const formData = {
       email: data.email,
       password: data.password,
@@ -45,6 +47,9 @@ export default function Register() {
       if (res.data.status === 200) {
         form.reset();
         ChangeIsActiveLogIn();
+      }
+      if (res.data.status === 400) {
+        setBackError(res.data.message);
       }
     } catch (e) {
       console.log(e);
@@ -133,6 +138,9 @@ export default function Register() {
               </p>
             )}
           </LabelInputContainer>
+          <div className='h-5 w-full '>
+            {backError && <p className='text-sm text-red-400'>{backError}</p>}
+          </div>
 
           <button
             className='group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]'
@@ -157,9 +165,9 @@ export default function Register() {
 
           <div className='my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700' />
 
-          <div className='flex flex-col space-y-4'>
+          {/* <div className='flex flex-col space-y-4'>
             <SignInWithGoogle />
-          </div>
+          </div> */}
         </form>
       </FormProvider>
     </div>

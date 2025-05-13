@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuthStore } from '@/store/authStore';
+import Link from 'next/link';
 import React from 'react';
 
 function ProfilePage() {
@@ -12,14 +13,12 @@ function ProfilePage() {
     .at(0)
     ?.toUpperCase()}${user1?.lastName.split('').at(0)?.toUpperCase()}`;
 
-  // Debugging: Log the user1 object to inspect membershipId
   console.log('user1:', user1);
 
-  // Format the endDate for display
   let expiryDate = 'Not available';
   if (user1.membershipId?.endDate) {
     const date = new Date(user1.membershipId.endDate);
-    // Check if the date is valid
+
     if (!isNaN(date.getTime())) {
       expiryDate = date.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -31,11 +30,10 @@ function ProfilePage() {
     }
   }
 
-  // Format the startDate for display
   let startDate = 'Not available';
   if (user1.membershipId?.startDate) {
     const date = new Date(user1.membershipId.startDate);
-    // Check if the date is valid
+
     if (!isNaN(date.getTime())) {
       startDate = date.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -50,7 +48,6 @@ function ProfilePage() {
   return (
     <div className='flex flex-col items-center min-h-screen bg-black pt-30 px-4'>
       <div className='w-full max-w-md bg-gray-900 rounded-2xl shadow-sm p-6 transform transition-all hover:shadow-md'>
-        {/* Profile Header */}
         <div className='flex flex-col items-center'>
           <div className='relative bg-blue-200 text-black w-20 flex items-center justify-center h-20 rounded-full overflow-hidden mb-4'>
             <p>{userImage}</p>
@@ -61,7 +58,6 @@ function ProfilePage() {
           <p className='text-gray-400 text-sm'>{user1.email}</p>
         </div>
 
-        {/* Membership Details */}
         <div className='mt-6 bg-gray-800 rounded-xl p-4'>
           <h3 className='text-sm font-medium text-gray-300 mb-2'>Membership</h3>
           {user1.membershipId ? (
@@ -100,9 +96,18 @@ function ProfilePage() {
               Make the first step, start now to become a member of AlphaZone.
             </p>
           )}
-          <p className='text-sm text-green-500 mt-4'>
-            To change or pause, please contact to us.
-          </p>
+          {user1 && user1.membershipId ? (
+            <p className='text-sm text-green-500 mt-6'>
+              To change or pause, please contact to us.
+            </p>
+          ) : (
+            <Link
+              className='text-sm text-green-500 mt-6'
+              href='/dashboard/membership'
+            >
+              Explore MemberShip
+            </Link>
+          )}
         </div>
       </div>
     </div>
