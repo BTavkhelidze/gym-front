@@ -61,7 +61,7 @@ export const categoryClasses: ICategory[] = [
   {
     id: 6,
     name: 'Muay-Thai',
-    image: RunningClass,
+    image: MuayThaiClass,
     description:
       'A Thai martial art using strikes, kicks, and clinching to develop power, coordination, and self-defense skills.',
   },
