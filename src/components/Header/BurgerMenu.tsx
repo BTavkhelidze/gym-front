@@ -57,7 +57,7 @@ function BurgerMenu() {
       </button>
       {
         <motion.div
-          initial={{ x: '600' }}
+          initial={{ x: '500px' }}
           animate={isOpen ? { x: 0 } : { x: 500 }}
           transition={{ duration: 0.5 }}
           className='absolute top-[64px]  sm:top-[101px]  right-0 w-[300px] z-20 h-screen bg-black '
